@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Kepegawaian — Kantor Imigrasi Kelas I TPI Tanjungpinang</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy-deepest: #040d1a;
+  --navy-deep: #071224;
+  --navy-mid: #0b1d38;
+  --navy-card: #0e2240;
+  --navy-hover: #122849;
+  --navy-border: #1c3559;
+  --navy-light: #244270;
+  --blue-royal: #1a56a8;
+  --blue-accent: #2166c0;
+  --blue-bright: #3b82f6;
+  --gold-deep: #a07b18;
+  --gold: #c9970f;
+  --gold-mid: #e0ab1e;
+  --gold-light: #f5c842;
+  --gold-pale: #fde58a;
+  --white: #f0f4fb;
+  --text-primary: #e8edf8;
+  --text-secondary: #9db3d1;
+  --text-muted: #5c7a9e;
+  --text-faint: #3a5478;
+  --divider: rgba(255,255,255,0.06);
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --red-del: #e53935;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy-deepest);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── BACKGROUND TEXTURE ───────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(33,102,192,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 100%, rgba(201,151,15,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(26,86,168,0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── DECORATIVE LINES ──────────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, transparent 100%);
+  z-index: 1000;
+}
+
+/* ─── HEADER ────────────────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7,18,36,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,151,15,0.25);
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.logo-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(201,151,15,0.3);
+  background: var(--navy-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
+
+.logo-fallback {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.header-text { flex: 1; min-width: 0; }
+.header-text h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.3px;
+}
+.header-text p {
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.badge-sistem {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold-mid);
+  border: 1px solid rgba(201,151,15,0.35);
+  border-radius: 4px;
+  padding: 4px 12px;
+  background: rgba(201,151,15,0.08);
+}
+
+.badge-count {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+.badge-count strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 2rem 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--divider);
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.hero-eyebrow::after { background: linear-gradient(90deg, var(--gold), transparent); }
+
+.hero h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 54px);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+.hero h2 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* ─── SEARCH ────────────────────────────────────────────── */
+.search-wrap {
+  max-width: 580px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  width: 18px;
+  height: 18px;
+}
+
+#searchInput {
+  width: 100%;
+  height: 52px;
+  background: rgba(11,29,56,0.8);
+  border: 1.5px solid var(--navy-border);
+  border-radius: 10px;
+  padding: 0 52px 0 50px;
+  font-size: 15px;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  letter-spacing: 0.2px;
+}
+#searchInput::placeholder { color: var(--text-faint); }
+#searchInput:focus {
+  border-color: var(--blue-accent);
+  background: rgba(15,34,64,0.95);
+  box-shadow: 0 0 0 3px rgba(33,102,192,0.2), 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.search-clear {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: none;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+.search-clear:hover { color: var(--text-primary); }
+.search-clear.visible { display: flex; align-items: center; }
+
+/* ─── STATS BAR ─────────────────────────────────────────── */
+.stats-bar {
+  max-width: 1280px;
+  margin: 1.5rem auto 0;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stat-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(11,29,56,0.6);
+  border: 1px solid var(--navy-border);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.stat-chip .num {
+  font-weight: 600;
+  color: var(--gold-mid);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-results {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.stat-results strong {
+  color: var(--text-secondary);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ─── ALPHABET FILTER ───────────────────────────────────── */
+.alpha-bar {
+  max-width: 1280px;
+  margin: 1rem auto 0;
+  padding: 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.alpha-btn {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  width: 30px;
+  height: 28px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  transition: all 0.15s;
+  letter-spacing: 0.3px;
+}
+.alpha-btn:hover { color: var(--text-primary); border-color: var(--navy-border); background: rgba(255,255,255,0.04); }
+.alpha-btn.active { color: var(--gold-mid); border-color: rgba(201,151,15,0.5); background: rgba(201,151,15,0.1); }
+.alpha-btn.all { width: 40px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+
+/* ─── MAIN ──────────────────────────────────────────────── */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.75rem 2rem 5rem;
+}
+
+/* ─── SECTION GROUPS ───────────────────────────────────── */
+.letter-section { margin-bottom: 2rem; }
+.letter-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+.letter-char {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  width: 32px;
+  text-align: center;
+}
+.letter-line {
+  flex: 1;
+  height: 1px;
+  background: var(--divider);
+}
+.letter-cnt {
+  font-size: 11px;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ─── GRID ──────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 1rem;
+}
+
+/* ─── CARD ──────────────────────────────────────────────── */
+.card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 14px;
+  padding: 1.35rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  cursor: default;
+  animation: cardIn 0.3s ease both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue-accent), var(--blue-bright));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(33,102,192,0.6);
+  background: var(--navy-hover);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(33,102,192,0.2);
+}
+.card:hover::after { opacity: 1; }
+
+/* ─── AVATAR ────────────────────────────────────────────── */
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2.5px solid var(--navy-light);
+  background: var(--navy-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+  position: relative;
+}
+.card:hover .avatar { border-color: var(--blue-bright); }
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.avatar-initials {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--blue-bright);
+  letter-spacing: 0.5px;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ─── CARD CONTENT ──────────────────────────────────────── */
+.card-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+  word-break: break-word;
+  letter-spacing: 0.1px;
+}
+
+.card-nip {
+  font-size: 10px;
+  color: var(--text-faint);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.8px;
+}
+
+.card-divider {
+  width: 28px;
+  height: 1px;
+  background: var(--divider);
+  flex-shrink: 0;
+}
+
+.drive-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  background: rgba(26,86,168,0.2);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 7px;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(147,197,253,0.9);
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  transition: all 0.18s;
+  letter-spacing: 0.3px;
+  margin-top: auto;
+}
+.drive-btn:hover {
+  background: rgba(33,102,192,0.45);
+  border-color: rgba(59,130,246,0.5);
+  color: #bde0ff;
+}
+
+
+
+/* ─── EMPTY STATE ───────────────────────────────────────── */
+#emptyState {
+  display: none;
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--text-muted);
+}
+#emptyState .empty-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.25rem;
+  background: var(--navy-mid);
+  border: 1px solid var(--navy-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#emptyState h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+#emptyState p { font-size: 13px; }
+
+
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .header-inner { padding: 0 1rem; }
+  .hero { padding: 2.5rem 1rem 2rem; }
+  main { padding: 1.25rem 1rem 4rem; }
+  .stats-bar, .alpha-bar { padding: 0 1rem; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 0.75rem; }
+  .badge-sistem { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ───────────────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <img src="logo_imigrasi.png" alt="Logo Imigrasi" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=logo-fallback>IM</span>'">
+    </div>
+    <div class="header-text">
+      <h1>Kantor Imigrasi Kelas I TPI Tanjungpinang</h1>
+      <p>Kementrian Imigrasi Dan Permasyarakatan</p>
+    </div>
+    <div class="header-right">
+      <div class="badge-count">Total <strong id="hdrCount">0</strong> pegawai</div>
+      <div class="badge-sistem">Sistem Imigrasi</div>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-eyebrow">Data Kepegawaian Digital</div>
+  <h2>Direktori <em>Pegawai</em></h2>
+  <p class="hero-sub">Cari data kepegawaian berdasarkan nama atau NIP</p>
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.8-3.8"/>
+    </svg>
+    <input type="text" id="searchInput" placeholder="Ketik nama atau NIP pegawai…" autocomplete="off" spellcheck="false">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()" title="Hapus pencarian">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<!-- ── STATS & FILTER ───────────────────────────────────── -->
+<div class="stats-bar">
+  <div class="stat-chip">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+    <span>Total <span class="num" id="totalCount">0</span> pegawai terdaftar</span>
+  </div>
+  <div class="stat-results" id="resultsInfo"></div>
+</div>
+
+<div class="alpha-bar" id="alphaBar"></div>
+
+<!-- ── MAIN ─────────────────────────────────────────────── -->
+<main>
+  <div id="emptyState">
+    <div class="empty-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5c7a9e" stroke-width="1.5">
+        <circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.8-3.8"/>
+      </svg>
+    </div>
+    <h3>Tidak Ditemukan</h3>
+    <p>Tidak ada pegawai yang cocok dengan pencarian Anda.</p>
+  </div>
+  <div id="gridContainer"></div>
+</main>
+
+
+
+<script>
+let employees = [
+  { nama: "ALEXANDER SIANTURI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/12VIMga1Fj96wSRsqNY5stjIuKQehPAuK?usp=drive_link" },
+  { nama: "AYU LESTARI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1aCgb0luzMffxBAGDmCsvatLP9Q0hepG2?usp=drive_link" },
+  { nama: "AFDHAL YUDHA FAHREZI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1zmkctN51i-xiSMjX8bGVX-EmUKrpLT8Y?usp=drive_link" },
+  { nama: "ALHUWAYRIST ROYHAN APRIYANTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1prKt0taOyTi_rSbsvNvyPmGk9EIUizHv?usp=drive_link" },
+  { nama: "ALWIS KURNIANTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1qrP6VlJaNikRyrIKOWHP3BZzS_95L1HC?usp=drive_link" },
+  { nama: "ANGGA RESTU PUTRA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/18wQTO3JIGLlP6n7suKOkvl_k2vzkw2Wt?usp=drive_link" },
+  { nama: "APRILIA FLORA INDAH REKTY", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/11uy5sCLLU4CbXWqQsC0fb_k3J0Y_97aW?usp=drive_link" },
+  { nama: "APRIYANTO HERI SUYITNO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1KwOu13pBIaKmjoilHNsgI2s5vlUOz5Xl?usp=drive_link" },
+  { nama: "ARDIAN NUGRAHA YUDHA WIBOWO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1i9mwY3wn3mwSJEDAYP6DNZclJZZrZquM?usp=drive_link" },
+  { nama: "ARI WAHYUDI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1_4WBsOOgNsjpn7cf7B_NvcOlUMtEuCgq?usp=drive_link" },
+  { nama: "BAHARUDDIN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/15hqZHPoMKsATLV-33ZNSSvhfqssScspW?usp=drive_link" },
+  { nama: "BERLIN FRANSISCO FERNANDO S.", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1VTiCJILRKGoRsmI1TZmFZMnQ0F0Q5U1h?usp=drive_link" },
+  { nama: "BRAMA SETIA AGUS RIADY", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/14f5hdu4OB-u_35QwPLWh30Sz6gcChFMl?usp=drive_link" },
+  { nama: "BUDIONO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1xyws-hHhmiQocM5_1VQzR_9A9SPx419p?usp=drive_link" },
+  { nama: "CHAIRULY", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1l2DIhmCfB_exaJlsj_LvTzOTmSwunddJ?usp=drive_link" },
+  { nama: "DEAN CROSSTIAN AMRICO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Sab17LyKwNUt3oPp6GVVvbtgsLJNshj_?usp=drive_link" },
+  { nama: "DENLY FERDINAND MANURUNG", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1o-BQjIEH48PGhQlghGM8BLdGixPYHG-2?usp=drive_link" },
+  { nama: "DEWI SUSANTI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1NTvZDLISZWE8591KYt2fAI_xWnogdTjo?usp=drive_link" },
+  { nama: "DIAN SUMATRI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1eVqYUD8VUKGCK75R9WTlHt5E5uuVuWPf?usp=drive_link" },
+  { nama: "DANIEL MAXRINTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1qR8s6ICtzTa1PBGDu1EJn6b1NTiTGSBJ?usp=drive_link" },
+  { nama: "DIAN SANDRA GUSMIDANA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1ENIOuYXMasltsLd4-2TnTcrY2ydpqA58?usp=drive_link" },
+  { nama: "DWI NOVITA NANDA LESTARI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1C0QVer1-sEVIl5R0Keq_KG7Q5qkBFOLN?usp=drive_link" },
+  { nama: "EDWIN BUDI SANTIKO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1kb0yVIAoWgRwrpZjFL-Eug7OFKrC9qbI?usp=drive_link" },
+  { nama: "EKA KURNIAWATI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1yrzbWaJIAy3Ml2M9GRTH9op_5nznZ6Nv?usp=drive_link" },
+  { nama: "ERWIN HARIYADI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1RsWrpFHrY5gBGFHKc6tEAiUkDgRiyQuL?usp=drive_link" },
+  { nama: "FATIMAH ZAHARA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1PSKbxjuwqlTQqXLSIIgsVLt-eeBdQHQq?usp=drive_link" },
+  { nama: "FAIZA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1eN3aadArOvzWiwfQMOCRHgjdtmz_zZQw?usp=drive_link" },
+  { nama: "FIFY ROSMITA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1FSMrK1mDPVR3n_gUXGM23cmZC0fshYxE?usp=drive_link" },
+  { nama: "FIKKY AMIRULLAH", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1EqrJJmqYjdeM6ICAygk5r6ETssNxgCwa?usp=drive_link" },
+  { nama: "FIRDAUS", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1lir6gg10GAA3oWhvAG7SJDP6P3O-8HcE?usp=drive_link" },
+  { nama: "GANDHI AGUNG WIBOWO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1SUBq9uVYvMMRWyh_pJPb57fisBeheuvY?usp=drive_link" },
+  { nama: "HARYONO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1OlI2iOXCxS9HPaRJNjXAOnEruH_HjU9D?usp=drive_link" },
+  { nama: "HERLIS FAHMIL QUR'ANI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Snh9N0niuat8Wd1UnNl6jV00nnWBtyyR?usp=drive_link" },
+  { nama: "HOT PARULIAN TONDANG", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1b3ZovqptHKREqzmor2s0AWc13wgik6_5?usp=drive_link" },
+  { nama: "I GUSTI NGURAH DEVA ADITYA LAKSMANA PUTRA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1fr-ZDPAtsG-ZNfelfUONSQmsZ6QqFGZk?usp=drive_link" },
+  { nama: "INDRA SAHPUTRA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1ZMF_enb30I7o0Aob6NYEC6AJm3Sjt2lc?usp=drive_link" },
+  { nama: "IQBAL KURNIA FAJAR", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/17qXnkcTxAFbb0oLYiNoU2zp86jwK-Pwx?usp=drive_link" },
+  { nama: "JOSE HANZEN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1rFAKo5Dcaw70BoSY2Jiaihsq1nGlngZi?usp=drive_link" },
+  { nama: "KUSMARTONO W.", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1FP8T3B9NNsvKPG4fGyx2PzPAfuQBLNj8?usp=drive_link" },
+  { nama: "LIA ANDINI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1e3rONOAS2gaLUAVoeh-ra4aJnH7HDj6u?usp=drive_link" },
+  { nama: "LUSIANA TANIA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1FHphxFhIkl8sX3pXY2nzyYybuGc4OjVc?usp=drive_link" },
+  { nama: "M. FARHAN ZAQI ZHILAL", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1kbDu8RPbIvWpmtZo3HwUTlx92eJBnwnB?usp=drive_link" },
+  { nama: "MADE HERY SUSANTA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1gQSb9r3HedSAoSvGgfCv8oolOEvpRhLW?usp=drive_link" },
+  { nama: "MARGI PURNAMA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1GHKWnD3Sjf2lpddjha6qkbnGp2XXK7v2?usp=drive_link" },
+  { nama: "MASMUSA SABARIN S. PITUN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Vp8BORKNuN44hZ4R66jKzG3djdpnmcEf?usp=drive_link" },
+  { nama: "MIKHAEL MARCELINO PASARIBU", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1VEq08gnHfU9i15gnz7WfwzTRRrZyqGI5?usp=drive_link" },
+  { nama: "MOCH YAZID ALFALIKUL ISBAH", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1hf6RwSdzuvlOkbP2rPxm0AXRnB7udCnf?usp=drive_link" },
+  { nama: "MOHAMMAD SALMAN AL FARISI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/11JXo2r-Ne8ZNTnfkAygK2VGNNRqzEZ7Y?usp=drive_link" },
+  { nama: "MOHD. ILHAM", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1WpkkmvS5q8ZVbDyaEAKdZx9ocbxlTjtK?usp=drive_link" },
+  { nama: "MUHAMMAD AULIA RAMADHAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1EOMdiY80VIN3NIeZZWCUmvGtcnx8F7nr?usp=drive_link" },
+  { nama: "MUHAMMAD AKRAM HUTASUHUT", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/16cM110T_c9OkZZNQ9nAKvsb6NuFq7kTD?usp=drive_link" },
+  { nama: "MUHAMMAD DENNY RIDWAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1YClZ1lyBqnIIaYEl_JLemXFfOe3xAQhd?usp=drive_link" },
+  { nama: "MUHAMMAD FATONY B. SETYAWAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/15JhWdKGzdL6mUHmvgJPuaL0RgX4j41It?usp=drive_link" },
+  { nama: "MUHAMMAD IRWANSYAH", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1-iO3XbkInPEFDZ7ZCIRKUqEXAPSFZmE5?usp=drive_link" },
+  { nama: "MUHAMMAD LUTHFIE ARIANDI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/10KurjeMCA-yi8qX5vvhqHAqAVQh75e5O?usp=drive_link" },
+  { nama: "MUHAMMAD NAUFAL DZAKY", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1SXGgpIm4AK3uH6lJ8c0Rhy_vujRroTyZ?usp=drive_link" },
+  { nama: "NAJWA MAHABATA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1c0kt3jQAy0OcKYZUwGYfQmA4ObvIb67u?usp=drive_link" },
+  { nama: "NATASYA ALYA ZAHIRA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1h2Nxvfw94lDDfuk0RfPJN3xB1AhNbR-k?usp=drive_link" },
+  { nama: "NIKI SYAMSIDAR", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1paKtp6V-gq-jDUDFMkXu5z-UmqxqCbWB?usp=drive_link" },
+  { nama: "NOLA VIDYA DEWI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1oviR3mhQSJ1mGesNgZkP7THjFyGhSRBG?usp=drive_link" },
+  { nama: "NOVIA VALENTINA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1f-GzT-KwMUZt94phSwnKeHU0NO9zK-9O?usp=drive_link" },
+  { nama: "NURI FITRIA SARI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1HMZy9A6Nbz8B8b__lcYKhdz69jY0FWZP?usp=drive_link" },
+  { nama: "ONGGO SATRIO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Z47DK3Xd2drsDOZHmCK34gFQt99G2rM3?usp=drive_link" },
+  { nama: "ORLANDA OKTA VERDIAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1OAX8SkR_veBuUkF28WEijG7ie_eykNEp?usp=drive_link" },
+  { nama: "PRIZZA REZEKY OKTACESAR", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/13BjmLnwULTDO8S3-aK1UUnipgUyj2JPk?usp=drive_link" },
+  { nama: "RAJA MUHAMMAD FIKRA YUDHA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1q6L4f4kNTzjJhNwYCGCbU-iuQgpWKnxy?usp=drive_link" },
+  { nama: "RAJA VIRGANDI AGUSTI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1AQpwtPWIH3A06-JN_5msZ7alzUnFeJkb?usp=drive_link" },
+  { nama: "RENDI PUJO TRIONO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/13c2jkAhjokTN1qnQEfe8w7-wlqqzwiPq?usp=drive_link" },
+  { nama: "RIAN KASPARI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1AEOPXsd-33mbSJ_1rM88WNkTzySzLV6d?usp=drive_link" },
+  { nama: "RIDWAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1_kKmrX4vkBe2pD89NcQ5zQQJLIlWAuE_?usp=drive_link" },
+  { nama: "RIKI SUWASONO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Wwp0FkWMw2rIG9tjGp4oKkA3fdHc_kx9?usp=drive_link" },
+  { nama: "RINDA IKHMAH ELSHA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/16Z0MuB-9GB3EH-uXfLl8Sx9Sbgl58qZD?usp=drive_link" },
+  { nama: "RISKA RAMADANI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1sqnAALU9LDouleJ_yCJNjnHVFIydhF8k?usp=drive_link" },
+  { nama: "ROBBY MARTEJA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1IRDsoWgbbrdJeOg1FKS1hF_kBfN8Iit-?usp=drive_link" },
+  { nama: "RONALDO RIANTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1ddyIZUqXJ6A7OtK6Cgja4bYG2L12Xbrz?usp=drive_link" },
+  { nama: "RYANDA ADLIS", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/16HLqha3i1mXZdTheq3gjUaOtVTA6jEMY?usp=drive_link" },
+  { nama: "SANDY RIFKI ENRICKO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1M5vZB8icVyxtcPEhiPReKG3w1ti_B7eL?usp=drive_link" },
+  { nama: "SILVI WIRA WANGSA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1PHAiYDtbzCOtSdEvqiEwdaYtSzGPPWsl?usp=drive_link" },
+  { nama: "SINTIA RIZKI WAHYUNINGSIH", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1RcQ4aJazMO-aF5Qq0xLKL8jzXa8Vqv1y?usp=drive_link" },
+  { nama: "SONDANG SIREGAR", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Wvsnmb3ifPXP827K-yrc6S1xQbQi1NiB?usp=drive_link" },
+  { nama: "SOULTAN FAREL", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Tij5wydQkJWYlaxlBxR7F2mJtrtgO8hN?usp=drive_link" },
+  { nama: "SRI DESWITA UNDARIYANI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1gXDaSNQW7t_Bu1iFA9OiHk2Nh7llgS9I?usp=drive_link" },
+  { nama: "TAUFIQ NUGRAHA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/19WfX81OenQKYw2yi_AFH31QsP5BoLuyl?usp=drive_link" },
+  { nama: "TEDDY SETYAWAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1HDx2rkf6enTpKAF_wYzSZFiTNT4I0vjM?usp=drive_link" },
+  { nama: "THERESIA IMELDA SIHITE", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Xp0j5UF6LAkItLsuFEW1yVNXNdfTa40F?usp=drive_link" },
+  { nama: "THOMY ARUNG PALIMBUNGA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1S0HwjVEj41XDN1o-WB-1x6eYgAtFxjb_?usp=drive_link" },
+  { nama: "TRY RAHAYU", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1RddFqIkqWQDzlwXATJvZtOxrEwqL3k83?usp=drive_link" },
+  { nama: "TRISNA ROZALINDA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1ZCOMPLIDjYGeWbZ5AO5g-VIqnQNCIslK?usp=drive_link" },
+  { nama: "USI HERLINA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1_5yoSlLx50ViXrpA2Z8VLDI_HEPCpZ1i?usp=drive_link" },
+  { nama: "VINCENTIUS", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Za2NK_VWp3o-XESQ1tmyqdtUoHGWkynE?usp=drive_link" },
+  { nama: "WAHYU HIDAYAT", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1TsFSRjNrXVvVK63oBpYqGp1dWvn1r_n6?usp=drive_link" },
+  { nama: "WIGANDA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1x5xNMzI8T9HR_6Jsd2bAv_Sf_Ary3EvG?usp=drive_link" },
+  { nama: "WINARTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/14Pec1EjJZhsrJKcglKy0IARWhF9pIeVY?usp=drive_link" },
+  { nama: "YANARIA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1EDwQaEBubQWra2Ls5SF5ihmxpaVH43NG?usp=drive_link" },
+  { nama: "YONGKI SEPRIANCE", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1iF_XOolyKr8AvZJ0Afv3BjZuaQ9l5XYD?usp=drive_link" },
+  { nama: "YUDHA PRAWIRA PRADANA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1XxEI8oijnP4V9hvo5Re4QmhDysNolSie?usp=drive_link" },
+  { nama: "YUS SUDARSO NUGROHO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1jSxtkouwRRcMmuKzJrCdeSajxuMY9uOH?usp=drive_link" },
+  { nama: "ZEANLIS HENRICO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/19lV_2JRIyyZI_DABRQhZD4ouZC8Ic8y1?usp=drive_link" },
+];
+
+let activeAlpha = 'ALL';
+
+function getInitials(nama) {
+  return nama.replace(/[^a-zA-Z\s]/g, '').trim().split(/\s+/).slice(0, 2).map(w => w[0]?.toUpperCase() || '').join('');
+}
+
+function avatarHTML(e, size) {
+  const ini = getInitials(e.nama);
+  if (e.foto && e.foto.trim()) {
+    return `<img src="${e.foto}" alt="${e.nama}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="avatar-initials" style="display:none">${ini}</span>`;
+  }
+  return `<span class="avatar-initials">${ini}</span>`;
+}
+
+function buildAlphaBar(list) {
+  const letters = [...new Set(list.map(e => e.nama[0].toUpperCase()))].sort();
+  const bar = document.getElementById('alphaBar');
+  bar.innerHTML = `<button class="alpha-btn all ${activeAlpha==='ALL'?'active':''}" onclick="setAlpha('ALL')">Semua</button>`;
+  letters.forEach(l => {
+    bar.innerHTML += `<button class="alpha-btn ${activeAlpha===l?'active':''}" onclick="setAlpha('${l}')">${l}</button>`;
+  });
+}
+
+function setAlpha(l) {
+  activeAlpha = l;
+  render();
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('searchClear').classList.remove('visible');
+  render();
+}
+
+function render() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const cntEl = document.getElementById('totalCount');
+  const hdrEl = document.getElementById('hdrCount');
+  const infoEl = document.getElementById('resultsInfo');
+  const container = document.getElementById('gridContainer');
+  const emptyEl = document.getElementById('emptyState');
+
+  cntEl.textContent = employees.length;
+  hdrEl.textContent = employees.length;
+
+  document.getElementById('searchClear').classList.toggle('visible', q.length > 0);
+
+  let filtered = employees.filter(e => {
+    const matchQ = !q || e.nama.toLowerCase().includes(q) || (e.nip && e.nip.includes(q));
+    const matchA = activeAlpha === 'ALL' || e.nama[0].toUpperCase() === activeAlpha;
+    return matchQ && matchA;
+  });
+
+  buildAlphaBar(employees);
+
+  if (filtered.length === 0) {
+    container.innerHTML = '';
+    emptyEl.style.display = 'block';
+    infoEl.innerHTML = '';
+    return;
+  }
+
+  emptyEl.style.display = 'none';
+  infoEl.innerHTML = q || activeAlpha !== 'ALL'
+    ? `Menampilkan <strong>${filtered.length}</strong> dari ${employees.length} pegawai`
+    : '';
+
+  if (q) {
+    container.innerHTML = `<div class="grid">${filtered.map((e, i) => cardHTML(e, i)).join('')}</div>`;
+    return;
+  }
+
+  const groups = {};
+  filtered.forEach(e => {
+    const l = e.nama[0].toUpperCase();
+    if (!groups[l]) groups[l] = [];
+    groups[l].push(e);
+  });
+
+  let html = '';
+  let delay = 0;
+  Object.keys(groups).sort().forEach(letter => {
+    html += `<div class="letter-section">
+      <div class="letter-header">
+        <span class="letter-char">${letter}</span>
+        <div class="letter-line"></div>
+        <span class="letter-cnt">${groups[letter].length}</span>
+      </div>
+      <div class="grid">
+        ${groups[letter].map((e, i) => cardHTML(e, delay++)).join('')}
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function cardHTML(e, delay) {
+  const ini = getInitials(e.nama);
+  const photoContent = e.foto
+    ? `<img src="${e.foto}" alt="${e.nama}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="avatar-initials" style="display:none">${ini}</span>`
+    : `<span class="avatar-initials">${ini}</span>`;
+
+  return `<div class="card" style="animation-delay:${Math.min(delay,30)*0.02}s">
+    <div class="avatar">${photoContent}</div>
+    <div class="card-name">${e.nama}</div>
+    ${e.nip ? `<div class="card-nip">${e.nip}</div>` : '<div class="card-nip">—</div>'}
+    <div class="card-divider"></div>
+    <a class="drive-btn" href="${e.drive}" target="_blank" rel="noopener noreferrer">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21.2 15c.7-1.2 1-2.5.8-3.8-.4-2.4-2.4-4.3-4.8-4.8-1.2-.2-2.4 0-3.4.5"/>
+        <path d="m7 9.7-2.4 4.2c-.7 1.2-1 2.5-.8 3.8.4 2.4 2.4 4.3 4.8 4.8 1.2.2 2.4 0 3.4-.5"/>
+        <path d="M7 9.7 9.4 5.5c.7-1.2 2.1-1.9 3.5-1.5 1.4.4 2.3 1.7 2.2 3.2"/>
+        <path d="M5 17h14"/>
+      </svg>
+      Buka Odner
+    </a>
+  </div>`;
+}
+
+
+document.getElementById('searchInput').addEventListener('input', render);
+render();
+</script>
+</body>
+</html>
