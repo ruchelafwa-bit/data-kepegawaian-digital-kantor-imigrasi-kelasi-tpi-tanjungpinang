@@ -7,63 +7,66 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy-deepest: #040d1a;
-  --navy-deep: #071224;
-  --navy-mid: #0b1d38;
-  --navy-card: #0e2240;
-  --navy-hover: #122849;
-  --navy-border: #1c3559;
-  --navy-light: #244270;
-  --blue-royal: #1a56a8;
-  --blue-accent: #2166c0;
-  --blue-bright: #3b82f6;
-  --gold-deep: #a07b18;
-  --gold: #c9970f;
-  --gold-mid: #e0ab1e;
-  --gold-light: #f5c842;
-  --gold-pale: #fde58a;
-  --white: #f0f4fb;
-  --text-primary: #e8edf8;
-  --text-secondary: #9db3d1;
-  --text-muted: #5c7a9e;
-  --text-faint: #3a5478;
-  --divider: rgba(255,255,255,0.06);
-  --card-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  --red-del: #e53935;
+  --bg-base: #e8f4fd;
+  --bg-page: #dff0fb;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f8ff;
+  --bg-header: rgba(255,255,255,0.96);
+  --border-card: #b8ddf5;
+  --border-hover: #38aee0;
+  --border-header: rgba(56,174,224,0.25);
+
+  --sky-deep: #0d6fa3;
+  --sky-primary: #1898d4;
+  --sky-mid: #38aee0;
+  --sky-light: #7fcef0;
+  --sky-pale: #c0e8fa;
+  --sky-faint: #e8f6fd;
+
+  --gold: #f0a030;
+  --gold-light: #f5bc58;
+
+  --white: #ffffff;
+  --text-primary: #0a3d5c;
+  --text-secondary: #1e6a95;
+  --text-muted: #5a9cbf;
+  --text-faint: #94c4dc;
+  --divider: rgba(56,174,224,0.2);
+  --card-shadow: 0 2px 16px rgba(56,174,224,0.15);
+
+  --chip-bg: rgba(56,174,224,0.1);
+  --chip-border: rgba(56,174,224,0.3);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: var(--navy-deepest);
+  background: var(--bg-base);
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* ─── BACKGROUND TEXTURE ───────────────────────────────── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(33,102,192,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 90% 100%, rgba(201,151,15,0.07) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(26,86,168,0.05) 0%, transparent 70%);
+    radial-gradient(ellipse 70% 50% at 5% 0%, rgba(56,174,224,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 95% 100%, rgba(127,206,240,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(56,174,224,0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* ─── DECORATIVE LINES ──────────────────────────────────── */
 body::after {
   content: '';
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, var(--sky-mid) 25%, var(--sky-primary) 50%, var(--gold) 65%, var(--sky-mid) 80%, transparent 100%);
   z-index: 1000;
 }
 
@@ -72,10 +75,11 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(7,18,36,0.92);
+  background: var(--bg-header);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(201,151,15,0.25);
+  border-bottom: 1px solid var(--border-header);
+  box-shadow: 0 2px 24px rgba(56,174,224,0.15);
 }
 
 .header-inner {
@@ -94,19 +98,18 @@ header {
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
-  border: 1px solid rgba(201,151,15,0.3);
-  background: var(--navy-mid);
+  border: 1.5px solid rgba(56,174,224,0.35);
+  background: var(--sky-faint);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
-
 .logo-fallback {
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--sky-primary);
 }
 
 .header-text { flex: 1; min-width: 0; }
@@ -114,7 +117,7 @@ header {
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: var(--white);
+  color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -122,7 +125,7 @@ header {
 }
 .header-text p {
   font-size: 11px;
-  color: var(--gold);
+  color: var(--sky-primary);
   letter-spacing: 1.8px;
   text-transform: uppercase;
   font-weight: 500;
@@ -141,22 +144,19 @@ header {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--gold-mid);
-  border: 1px solid rgba(201,151,15,0.35);
+  color: var(--sky-deep);
+  border: 1px solid rgba(56,174,224,0.4);
   border-radius: 4px;
   padding: 4px 12px;
-  background: rgba(201,151,15,0.08);
+  background: rgba(56,174,224,0.1);
 }
 
 .badge-count {
   font-size: 12px;
-  color: var(--text-secondary);
+  color: var(--text-muted);
   font-variant-numeric: tabular-nums;
 }
-.badge-count strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
+.badge-count strong { color: var(--text-primary); font-weight: 600; }
 
 /* ─── HERO ──────────────────────────────────────────────── */
 .hero {
@@ -165,6 +165,7 @@ header {
   padding: 4rem 2rem 2.5rem;
   text-align: center;
   border-bottom: 1px solid var(--divider);
+  background: linear-gradient(180deg, rgba(56,174,224,0.08) 0%, transparent 100%);
 }
 
 .hero-eyebrow {
@@ -175,7 +176,7 @@ header {
   letter-spacing: 2.5px;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--sky-primary);
   margin-bottom: 1.25rem;
 }
 .hero-eyebrow::before,
@@ -183,22 +184,25 @@ header {
   content: '';
   width: 32px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold));
+  background: linear-gradient(90deg, transparent, var(--sky-mid));
 }
-.hero-eyebrow::after { background: linear-gradient(90deg, var(--gold), transparent); }
+.hero-eyebrow::after { background: linear-gradient(90deg, var(--sky-mid), transparent); }
 
 .hero h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 5vw, 54px);
-  font-weight: 600;
-  color: var(--white);
+  font-size: clamp(42px, 6vw, 68px);
+  font-weight: 700;
+  color: var(--text-primary);
   line-height: 1.1;
   margin-bottom: 0.5rem;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
+  -webkit-text-stroke: 0.5px var(--text-primary);
 }
 .hero h2 em {
   font-style: italic;
-  color: var(--gold-light);
+  font-weight: 700;
+  color: var(--sky-primary);
+  -webkit-text-stroke: 0.5px var(--sky-primary);
 }
 
 .hero-sub {
@@ -229,23 +233,24 @@ header {
 #searchInput {
   width: 100%;
   height: 52px;
-  background: rgba(11,29,56,0.8);
-  border: 1.5px solid var(--navy-border);
+  background: #ffffff;
+  border: 1.5px solid var(--sky-light);
   border-radius: 10px;
   padding: 0 52px 0 50px;
   font-size: 15px;
-  color: var(--white);
+  color: var(--text-primary);
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   letter-spacing: 0.2px;
+  box-shadow: 0 2px 12px rgba(56,174,224,0.12);
 }
 #searchInput::placeholder { color: var(--text-faint); }
 #searchInput:focus {
-  border-color: var(--blue-accent);
-  background: rgba(15,34,64,0.95);
-  box-shadow: 0 0 0 3px rgba(33,102,192,0.2), 0 8px 32px rgba(0,0,0,0.3);
+  border-color: var(--sky-mid);
+  background: #f8fcff;
+  box-shadow: 0 0 0 3px rgba(56,174,224,0.2), 0 4px 20px rgba(56,174,224,0.15);
 }
 
 .search-clear {
@@ -280,8 +285,8 @@ header {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(11,29,56,0.6);
-  border: 1px solid var(--navy-border);
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
   border-radius: 6px;
   padding: 5px 12px;
   font-size: 12px;
@@ -289,7 +294,7 @@ header {
 }
 .stat-chip .num {
   font-weight: 600;
-  color: var(--gold-mid);
+  color: var(--sky-deep);
   font-variant-numeric: tabular-nums;
 }
 
@@ -316,8 +321,8 @@ header {
 }
 
 .alpha-btn {
-  background: none;
-  border: 1px solid transparent;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--border-card);
   border-radius: 5px;
   width: 30px;
   height: 28px;
@@ -329,8 +334,16 @@ header {
   transition: all 0.15s;
   letter-spacing: 0.3px;
 }
-.alpha-btn:hover { color: var(--text-primary); border-color: var(--navy-border); background: rgba(255,255,255,0.04); }
-.alpha-btn.active { color: var(--gold-mid); border-color: rgba(201,151,15,0.5); background: rgba(201,151,15,0.1); }
+.alpha-btn:hover {
+  color: var(--sky-deep);
+  border-color: var(--sky-light);
+  background: rgba(56,174,224,0.1);
+}
+.alpha-btn.active {
+  color: var(--white);
+  border-color: var(--sky-primary);
+  background: var(--sky-primary);
+}
 .alpha-btn.all { width: 40px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
 
 /* ─── MAIN ──────────────────────────────────────────────── */
@@ -354,7 +367,7 @@ main {
   font-family: 'Cormorant Garamond', serif;
   font-size: 26px;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--sky-primary);
   line-height: 1;
   width: 32px;
   text-align: center;
@@ -380,8 +393,8 @@ main {
 
 /* ─── CARD ──────────────────────────────────────────────── */
 .card {
-  background: var(--navy-card);
-  border: 1px solid var(--navy-border);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 14px;
   padding: 1.35rem 1rem 1rem;
   display: flex;
@@ -394,6 +407,7 @@ main {
   transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), border-color 0.2s, box-shadow 0.2s, background 0.2s;
   cursor: default;
   animation: cardIn 0.3s ease both;
+  box-shadow: 0 1px 8px rgba(56,174,224,0.1);
 }
 
 @keyframes cardIn {
@@ -406,16 +420,16 @@ main {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--blue-accent), var(--blue-bright));
+  background: linear-gradient(90deg, var(--sky-mid), var(--sky-light));
   opacity: 0;
   transition: opacity 0.2s;
 }
 
 .card:hover {
   transform: translateY(-4px) scale(1.01);
-  border-color: rgba(33,102,192,0.6);
-  background: var(--navy-hover);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(33,102,192,0.2);
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  box-shadow: 0 10px 32px rgba(56,174,224,0.2), 0 0 0 1px rgba(56,174,224,0.25);
 }
 .card:hover::after { opacity: 1; }
 
@@ -425,8 +439,8 @@ main {
   height: 80px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2.5px solid var(--navy-light);
-  background: var(--navy-mid);
+  border: 2.5px solid var(--sky-pale);
+  background: var(--sky-faint);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -434,14 +448,14 @@ main {
   transition: border-color 0.2s;
   position: relative;
 }
-.card:hover .avatar { border-color: var(--blue-bright); }
+.card:hover .avatar { border-color: var(--sky-mid); }
 .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .avatar-initials {
   font-family: 'Cormorant Garamond', serif;
   font-size: 24px;
   font-weight: 700;
-  color: var(--blue-bright);
+  color: var(--sky-primary);
   letter-spacing: 0.5px;
   line-height: 1;
   user-select: none;
@@ -477,13 +491,13 @@ main {
   justify-content: center;
   gap: 5px;
   width: 100%;
-  background: rgba(26,86,168,0.2);
-  border: 1px solid rgba(59,130,246,0.25);
+  background: rgba(56,174,224,0.1);
+  border: 1px solid rgba(56,174,224,0.3);
   border-radius: 7px;
   padding: 8px 10px;
   font-size: 11px;
   font-weight: 600;
-  color: rgba(147,197,253,0.9);
+  color: var(--sky-deep);
   font-family: 'DM Sans', sans-serif;
   text-decoration: none;
   transition: all 0.18s;
@@ -491,12 +505,10 @@ main {
   margin-top: auto;
 }
 .drive-btn:hover {
-  background: rgba(33,102,192,0.45);
-  border-color: rgba(59,130,246,0.5);
-  color: #bde0ff;
+  background: rgba(56,174,224,0.2);
+  border-color: rgba(56,174,224,0.55);
+  color: var(--sky-deep);
 }
-
-
 
 /* ─── EMPTY STATE ───────────────────────────────────────── */
 #emptyState {
@@ -509,8 +521,8 @@ main {
   width: 56px;
   height: 56px;
   margin: 0 auto 1.25rem;
-  background: var(--navy-mid);
-  border: 1px solid var(--navy-border);
+  background: var(--sky-faint);
+  border: 1px solid var(--border-card);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -525,8 +537,6 @@ main {
 }
 #emptyState p { font-size: 13px; }
 
-
-
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 700px) {
   .header-inner { padding: 0 1rem; }
@@ -535,7 +545,6 @@ main {
   .stats-bar, .alpha-bar { padding: 0 1rem; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 0.75rem; }
   .badge-sistem { display: none; }
-  .form-row { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -594,7 +603,7 @@ main {
 <main>
   <div id="emptyState">
     <div class="empty-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5c7a9e" stroke-width="1.5">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a9cbf" stroke-width="1.5">
         <circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.8-3.8"/>
       </svg>
     </div>
@@ -604,11 +613,9 @@ main {
   <div id="gridContainer"></div>
 </main>
 
-
-
 <script>
 let employees = [
-  { nama: "ALEXANDER SIANTURI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/12VIMga1Fj96wSRsqNY5stjIuKQehPAuK?usp=drive_link" },
+  { nama: "ALEXANDER SIANTURI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1pismI51ELdYCcO8yiIe_tmSoQkBxE41F?usp=drive_link" },
   { nama: "AYU LESTARI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1aCgb0luzMffxBAGDmCsvatLP9Q0hepG2?usp=drive_link" },
   { nama: "AFDHAL YUDHA FAHREZI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1zmkctN51i-xiSMjX8bGVX-EmUKrpLT8Y?usp=drive_link" },
   { nama: "ALHUWAYRIST ROYHAN APRIYANTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1prKt0taOyTi_rSbsvNvyPmGk9EIUizHv?usp=drive_link" },
@@ -618,7 +625,7 @@ let employees = [
   { nama: "APRIYANTO HERI SUYITNO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1KwOu13pBIaKmjoilHNsgI2s5vlUOz5Xl?usp=drive_link" },
   { nama: "ARDIAN NUGRAHA YUDHA WIBOWO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1i9mwY3wn3mwSJEDAYP6DNZclJZZrZquM?usp=drive_link" },
   { nama: "ARI WAHYUDI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1_4WBsOOgNsjpn7cf7B_NvcOlUMtEuCgq?usp=drive_link" },
-  { nama: "BAHARUDDIN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/15hqZHPoMKsATLV-33ZNSSvhfqssScspW?usp=drive_link" },
+  { nama: "BAHARUDDIN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/13-Flo6UX5IWhPnSS2n3xv8Ls-PUpO3sb?usp=drive_link" },
   { nama: "BERLIN FRANSISCO FERNANDO S.", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1VTiCJILRKGoRsmI1TZmFZMnQ0F0Q5U1h?usp=drive_link" },
   { nama: "BRAMA SETIA AGUS RIADY", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/14f5hdu4OB-u_35QwPLWh30Sz6gcChFMl?usp=drive_link" },
   { nama: "BUDIONO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1xyws-hHhmiQocM5_1VQzR_9A9SPx419p?usp=drive_link" },
@@ -628,11 +635,11 @@ let employees = [
   { nama: "DEWI SUSANTI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1NTvZDLISZWE8591KYt2fAI_xWnogdTjo?usp=drive_link" },
   { nama: "DIAN SUMATRI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1eVqYUD8VUKGCK75R9WTlHt5E5uuVuWPf?usp=drive_link" },
   { nama: "DANIEL MAXRINTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1qR8s6ICtzTa1PBGDu1EJn6b1NTiTGSBJ?usp=drive_link" },
-  { nama: "DIAN SANDRA GUSMIDANA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1ENIOuYXMasltsLd4-2TnTcrY2ydpqA58?usp=drive_link" },
+  { nama: "DIAN SANDRA GUSMIDANA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/15GIiseggo6iJ60CAwzEzRaOyIpEG0COz?usp=drive_link" },
   { nama: "DWI NOVITA NANDA LESTARI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1C0QVer1-sEVIl5R0Keq_KG7Q5qkBFOLN?usp=drive_link" },
   { nama: "EDWIN BUDI SANTIKO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1kb0yVIAoWgRwrpZjFL-Eug7OFKrC9qbI?usp=drive_link" },
   { nama: "EKA KURNIAWATI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1yrzbWaJIAy3Ml2M9GRTH9op_5nznZ6Nv?usp=drive_link" },
-  { nama: "ERWIN HARIYADI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1RsWrpFHrY5gBGFHKc6tEAiUkDgRiyQuL?usp=drive_link" },
+  { nama: "ERWIN HARIYADI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1_ov-s26W6_UhlrZUjeMBoK3NfxfGYYxc?usp=drive_link" },
   { nama: "FATIMAH ZAHARA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1PSKbxjuwqlTQqXLSIIgsVLt-eeBdQHQq?usp=drive_link" },
   { nama: "FAIZA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1eN3aadArOvzWiwfQMOCRHgjdtmz_zZQw?usp=drive_link" },
   { nama: "FIFY ROSMITA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1FSMrK1mDPVR3n_gUXGM23cmZC0fshYxE?usp=drive_link" },
@@ -706,20 +713,15 @@ let employees = [
   { nama: "YUDHA PRAWIRA PRADANA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1XxEI8oijnP4V9hvo5Re4QmhDysNolSie?usp=drive_link" },
   { nama: "YUS SUDARSO NUGROHO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1jSxtkouwRRcMmuKzJrCdeSajxuMY9uOH?usp=drive_link" },
   { nama: "ZEANLIS HENRICO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/19lV_2JRIyyZI_DABRQhZD4ouZC8Ic8y1?usp=drive_link" },
+  { nama: "DESTIRA PERMATA ARYANDI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1VgUVsS8nu4MKo9xXseS5d6jEkodyS8KA?usp=drive_link" },
+  { nama: "JORDY PRATAMA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1ldLMnZwhzgFUB2oDuLryHhydxFmh7GW-?usp=drive_link" },
+  { nama: "KEISHA ANDANI. K", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1W98HCUPdzyrgO5tAqQSX1z-IzRYwGwl0?usp=drive_link" },
 ];
 
 let activeAlpha = 'ALL';
 
 function getInitials(nama) {
   return nama.replace(/[^a-zA-Z\s]/g, '').trim().split(/\s+/).slice(0, 2).map(w => w[0]?.toUpperCase() || '').join('');
-}
-
-function avatarHTML(e, size) {
-  const ini = getInitials(e.nama);
-  if (e.foto && e.foto.trim()) {
-    return `<img src="${e.foto}" alt="${e.nama}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="avatar-initials" style="display:none">${ini}</span>`;
-  }
-  return `<span class="avatar-initials">${ini}</span>`;
 }
 
 function buildAlphaBar(list) {
@@ -731,10 +733,7 @@ function buildAlphaBar(list) {
   });
 }
 
-function setAlpha(l) {
-  activeAlpha = l;
-  render();
-}
+function setAlpha(l) { activeAlpha = l; render(); }
 
 function clearSearch() {
   document.getElementById('searchInput').value = '';
@@ -752,7 +751,6 @@ function render() {
 
   cntEl.textContent = employees.length;
   hdrEl.textContent = employees.length;
-
   document.getElementById('searchClear').classList.toggle('visible', q.length > 0);
 
   let filtered = employees.filter(e => {
@@ -772,8 +770,7 @@ function render() {
 
   emptyEl.style.display = 'none';
   infoEl.innerHTML = q || activeAlpha !== 'ALL'
-    ? `Menampilkan <strong>${filtered.length}</strong> dari ${employees.length} pegawai`
-    : '';
+    ? `Menampilkan <strong>${filtered.length}</strong> dari ${employees.length} pegawai` : '';
 
   if (q) {
     container.innerHTML = `<div class="grid">${filtered.map((e, i) => cardHTML(e, i)).join('')}</div>`;
@@ -787,8 +784,7 @@ function render() {
     groups[l].push(e);
   });
 
-  let html = '';
-  let delay = 0;
+  let html = '', delay = 0;
   Object.keys(groups).sort().forEach(letter => {
     html += `<div class="letter-section">
       <div class="letter-header">
@@ -796,9 +792,7 @@ function render() {
         <div class="letter-line"></div>
         <span class="letter-cnt">${groups[letter].length}</span>
       </div>
-      <div class="grid">
-        ${groups[letter].map((e, i) => cardHTML(e, delay++)).join('')}
-      </div>
+      <div class="grid">${groups[letter].map((e) => cardHTML(e, delay++)).join('')}</div>
     </div>`;
   });
   container.innerHTML = html;
@@ -822,11 +816,10 @@ function cardHTML(e, delay) {
         <path d="M7 9.7 9.4 5.5c.7-1.2 2.1-1.9 3.5-1.5 1.4.4 2.3 1.7 2.2 3.2"/>
         <path d="M5 17h14"/>
       </svg>
-      Buka
+      Buka Odner
     </a>
   </div>`;
 }
-
 
 document.getElementById('searchInput').addEventListener('input', render);
 render();
