@@ -95,15 +95,34 @@ header {
 
 .hero {
   position: relative; z-index: 1;
-  padding: 4rem 2rem 2.5rem; text-align: center;
+  padding: 3rem 2rem 2.5rem; text-align: center;
   border-bottom: 1px solid var(--divider);
   background: linear-gradient(180deg, rgba(56,174,224,0.08) 0%, transparent 100%);
 }
-.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--sky-primary); margin-bottom: 1.25rem; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--sky-primary); margin-bottom: 1rem; }
 .hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 32px; height: 1px; background: linear-gradient(90deg, transparent, var(--sky-mid)); }
 .hero-eyebrow::after { background: linear-gradient(90deg, var(--sky-mid), transparent); }
-.hero h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 6vw, 68px); font-weight: 700; color: var(--text-primary); line-height: 1.1; margin-bottom: 0.5rem; letter-spacing: -1px; }
-.hero h2 em { font-style: italic; font-weight: 700; color: var(--sky-primary); }
+.hero h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(80px, 18vw, 220px);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 0.9;
+  margin-bottom: 0.6rem;
+  letter-spacing: -4px;
+  font-style: normal;
+}
+.hero-accent {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(14px, 2vw, 22px);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--sky-primary);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
 .hero-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6; }
 
 .search-wrap { max-width: 580px; margin: 0 auto; position: relative; }
@@ -161,7 +180,14 @@ main { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; paddin
 .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .avatar-initials { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--sky-light); line-height: 1; user-select: none; }
 
-.card-name { font-size: 12.5px; font-weight: 600; color: var(--card-text-primary); line-height: 1.35; word-break: break-word; }
+.card-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--card-text-primary);
+  line-height: 1.35;
+  word-break: break-word;
+}
 .card-nip { font-size: 10px; color: var(--card-text-faint); font-family: 'DM Mono', monospace; letter-spacing: 0.8px; }
 .card-divider { width: 28px; height: 1px; background: var(--card-divider); flex-shrink: 0; }
 .drive-btn {
@@ -238,7 +264,8 @@ main { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; paddin
 
 @media (max-width: 700px) {
   .header-inner { padding: 0 1rem; }
-  .hero { padding: 2.5rem 1rem 2rem; }
+  .hero { padding: 2rem 1rem 2rem; }
+  .hero h2 { letter-spacing: -2px; }
   main { padding: 1.25rem 1rem 4rem; }
   .stats-bar, .alpha-bar { padding: 0 1rem; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 0.75rem; }
@@ -266,7 +293,8 @@ main { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; paddin
 
 <section class="hero">
   <div class="hero-eyebrow">Sistem Manajemen Data Pegawai</div>
-  <h2>SI MANTAP<em>
+  <h2>SIMANTAP</h2>
+  <span class="hero-accent">Sistem Informasi Manajemen Tata Administrasi Pegawai</span>
   <p class="hero-sub">Cari data kepegawaian berdasarkan nama atau NIP</p>
   <div class="search-wrap">
     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -343,7 +371,7 @@ let employees = [
   { nama: "GANDHI AGUNG WIBOWO", password: "IMI013", foto: "", drive: "https://drive.google.com/drive/folders/1rsgv_abHxVMnLp6ze2SpaGpPow79yylZ?usp=drive_link" },
   { nama: "FIKKY AMIRULLAH", password: "IMI014", foto: "", drive: "https://drive.google.com/drive/folders/1uPNUSq5l6mM9kHxrUx2Ev9bN-Zfq5UDa?usp=drive_link" },
   { nama: "EDWIN BUDI SANTIKO", password: "IMI015", foto: "", drive: "https://drive.google.com/drive/folders/1cllLBJ-1ww6Xeh9kiI5NExAgor0d0HhC?usp=drive_link" },
-  { nama: "HERLIS FAHMIL QUR\'ANI", password: "IMI016", foto: "", drive: "https://drive.google.com/drive/folders/1FFkDy95c6Q_HKMLA7r6sP9dzeoew-RTI?usp=drive_link" },
+  { nama: "HERLIS FAHMIL QUR'ANI", password: "IMI016", foto: "", drive: "https://drive.google.com/drive/folders/1FFkDy95c6Q_HKMLA7r6sP9dzeoew-RTI?usp=drive_link" },
   { nama: "FAIZA", password: "IMI017", foto: "", drive: "https://drive.google.com/drive/folders/12Cldgq-PhetF_4j8fDu_nJtLdUSprVrQ?usp=drive_link" },
   { nama: "DIAN SANDRA GUSMIDANA", password: "IMI018", foto: "", drive: "https://drive.google.com/drive/folders/1nKm_J6bcjyWwFS08VKYWSStwPKwcv4zu?usp=drive_link" },
   { nama: "TRISNA ROZALINDA", password: "IMI019", foto: "", drive: "https://drive.google.com/drive/folders/1715NPQzFaR98fuJSI6qJaKphhRV4X2Ca?usp=drive_link" },
