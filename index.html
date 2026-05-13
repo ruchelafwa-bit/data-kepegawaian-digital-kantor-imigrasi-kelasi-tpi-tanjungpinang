@@ -3,29 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Kepegawaian — Kantor Imigrasi Kelas I TPI Tanjungpinang</title>
+<title>Si Mantap — Kantor Imigrasi Kelas I TPI Tanjungpinang</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg-base: #e8f4fd;
   --bg-page: #dff0fb;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f0f8ff;
+  --bg-card: #1a5276;
+  --bg-card-hover: #1f618d;
   --bg-header: rgba(255,255,255,0.96);
-  --border-card: #b8ddf5;
-  --border-hover: #38aee0;
+  --border-card: #2980b9;
+  --border-hover: #5dade2;
   --border-header: rgba(56,174,224,0.25);
-
   --sky-deep: #0d6fa3;
   --sky-primary: #1898d4;
   --sky-mid: #38aee0;
   --sky-light: #7fcef0;
-  --sky-pale: #c0e8fa;
-  --sky-faint: #e8f6fd;
-
+  --sky-pale: #2e86c1;
+  --sky-faint: #154360;
   --gold: #f0a030;
-  --gold-light: #f5bc58;
-
   --white: #ffffff;
   --text-primary: #0a3d5c;
   --text-secondary: #1e6a95;
@@ -33,14 +29,17 @@
   --text-faint: #94c4dc;
   --divider: rgba(56,174,224,0.2);
   --card-shadow: 0 2px 16px rgba(56,174,224,0.15);
-
   --chip-bg: rgba(56,174,224,0.1);
   --chip-border: rgba(56,174,224,0.3);
+  --card-text-primary: #d6eaf8;
+  --card-text-muted: #85c1e9;
+  --card-text-faint: #5dade2;
+  --card-divider: rgba(93,173,226,0.3);
+  --card-avatar-bg: #154360;
+  --card-avatar-border: #2e86c1;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--bg-base);
@@ -48,7 +47,6 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
-
 body::before {
   content: '';
   position: fixed;
@@ -60,7 +58,6 @@ body::before {
   pointer-events: none;
   z-index: 0;
 }
-
 body::after {
   content: '';
   position: fixed;
@@ -70,474 +67,175 @@ body::after {
   z-index: 1000;
 }
 
-/* ─── HEADER ────────────────────────────────────────────── */
 header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: sticky; top: 0; z-index: 100;
   background: var(--bg-header);
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-header);
   box-shadow: 0 2px 24px rgba(56,174,224,0.15);
 }
-
 .header-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
+  max-width: 1280px; margin: 0 auto; padding: 0 2rem;
+  height: 70px; display: flex; align-items: center; gap: 1.25rem;
 }
-
 .logo-wrap {
-  width: 46px;
-  height: 46px;
-  border-radius: 8px;
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 1.5px solid rgba(56,174,224,0.35);
-  background: var(--sky-faint);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 46px; height: 46px; border-radius: 8px; overflow: hidden;
+  flex-shrink: 0; border: 1.5px solid rgba(56,174,224,0.35);
+  background: var(--sky-faint); display: flex; align-items: center; justify-content: center;
 }
 .logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
-.logo-fallback {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--sky-primary);
-}
-
+.logo-fallback { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--sky-primary); }
 .header-text { flex: 1; min-width: 0; }
-.header-text h1 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  letter-spacing: 0.3px;
-}
-.header-text p {
-  font-size: 11px;
-  color: var(--sky-primary);
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  font-weight: 500;
-  margin-top: 1px;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-.badge-sistem {
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--sky-deep);
-  border: 1px solid rgba(56,174,224,0.4);
-  border-radius: 4px;
-  padding: 4px 12px;
-  background: rgba(56,174,224,0.1);
-}
-
-.badge-count {
-  font-size: 12px;
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-}
+.header-text h1 { font-size: 14px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: 0.3px; }
+.header-text p { font-size: 11px; color: var(--sky-primary); letter-spacing: 1.8px; text-transform: uppercase; font-weight: 500; margin-top: 1px; }
+.header-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.badge-sistem { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; color: var(--sky-deep); border: 1px solid rgba(56,174,224,0.4); border-radius: 4px; padding: 4px 12px; background: rgba(56,174,224,0.1); }
+.badge-count { font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .badge-count strong { color: var(--text-primary); font-weight: 600; }
 
-/* ─── HERO ──────────────────────────────────────────────── */
 .hero {
-  position: relative;
-  z-index: 1;
-  padding: 4rem 2rem 2.5rem;
-  text-align: center;
+  position: relative; z-index: 1;
+  padding: 4rem 2rem 2.5rem; text-align: center;
   border-bottom: 1px solid var(--divider);
   background: linear-gradient(180deg, rgba(56,174,224,0.08) 0%, transparent 100%);
 }
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 10.5px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--sky-primary);
-  margin-bottom: 1.25rem;
-}
-.hero-eyebrow::before,
-.hero-eyebrow::after {
-  content: '';
-  width: 32px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--sky-mid));
-}
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--sky-primary); margin-bottom: 1.25rem; }
+.hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 32px; height: 1px; background: linear-gradient(90deg, transparent, var(--sky-mid)); }
 .hero-eyebrow::after { background: linear-gradient(90deg, var(--sky-mid), transparent); }
+.hero h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 6vw, 68px); font-weight: 700; color: var(--text-primary); line-height: 1.1; margin-bottom: 0.5rem; letter-spacing: -1px; }
+.hero h2 em { font-style: italic; font-weight: 700; color: var(--sky-primary); }
+.hero-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6; }
 
-.hero h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(42px, 6vw, 68px);
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-  letter-spacing: -1px;
-  -webkit-text-stroke: 0.5px var(--text-primary);
-}
-.hero h2 em {
-  font-style: italic;
-  font-weight: 700;
-  color: var(--sky-primary);
-  -webkit-text-stroke: 0.5px var(--sky-primary);
-}
-
-.hero-sub {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-/* ─── SEARCH ────────────────────────────────────────────── */
-.search-wrap {
-  max-width: 580px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.search-icon {
-  position: absolute;
-  left: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-  pointer-events: none;
-  width: 18px;
-  height: 18px;
-}
-
+.search-wrap { max-width: 580px; margin: 0 auto; position: relative; }
+.search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; width: 18px; height: 18px; }
 #searchInput {
-  width: 100%;
-  height: 52px;
-  background: #ffffff;
-  border: 1.5px solid var(--sky-light);
-  border-radius: 10px;
-  padding: 0 52px 0 50px;
-  font-size: 15px;
-  color: var(--text-primary);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-  letter-spacing: 0.2px;
+  width: 100%; height: 52px; background: #ffffff; border: 1.5px solid var(--sky-light);
+  border-radius: 10px; padding: 0 52px 0 50px; font-size: 15px; color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 12px rgba(56,174,224,0.12);
 }
 #searchInput::placeholder { color: var(--text-faint); }
-#searchInput:focus {
-  border-color: var(--sky-mid);
-  background: #f8fcff;
-  box-shadow: 0 0 0 3px rgba(56,174,224,0.2), 0 4px 20px rgba(56,174,224,0.15);
-}
-
-.search-clear {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-muted);
-  display: none;
-  padding: 4px;
-  border-radius: 4px;
-  transition: color 0.15s;
-}
+#searchInput:focus { border-color: var(--sky-mid); background: #f8fcff; box-shadow: 0 0 0 3px rgba(56,174,224,0.2), 0 4px 20px rgba(56,174,224,0.15); }
+.search-clear { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text-muted); display: none; padding: 4px; border-radius: 4px; transition: color 0.15s; }
 .search-clear:hover { color: var(--text-primary); }
 .search-clear.visible { display: flex; align-items: center; }
 
-/* ─── STATS BAR ─────────────────────────────────────────── */
-.stats-bar {
-  max-width: 1280px;
-  margin: 1.5rem auto 0;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+.stats-bar { max-width: 1280px; margin: 1.5rem auto 0; padding: 0 2rem; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.stat-chip { display: flex; align-items: center; gap: 6px; background: var(--chip-bg); border: 1px solid var(--chip-border); border-radius: 6px; padding: 5px 12px; font-size: 12px; color: var(--text-secondary); }
+.stat-chip .num { font-weight: 600; color: var(--sky-deep); font-variant-numeric: tabular-nums; }
+.stat-results { margin-left: auto; font-size: 12px; color: var(--text-muted); font-style: italic; }
+.stat-results strong { color: var(--text-secondary); font-style: normal; font-weight: 500; }
 
-.stat-chip {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--chip-bg);
-  border: 1px solid var(--chip-border);
-  border-radius: 6px;
-  padding: 5px 12px;
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-.stat-chip .num {
-  font-weight: 600;
-  color: var(--sky-deep);
-  font-variant-numeric: tabular-nums;
-}
-
-.stat-results {
-  margin-left: auto;
-  font-size: 12px;
-  color: var(--text-muted);
-  font-style: italic;
-}
-.stat-results strong {
-  color: var(--text-secondary);
-  font-style: normal;
-  font-weight: 500;
-}
-
-/* ─── ALPHABET FILTER ───────────────────────────────────── */
-.alpha-bar {
-  max-width: 1280px;
-  margin: 1rem auto 0;
-  padding: 0 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.alpha-btn {
-  background: rgba(255,255,255,0.7);
-  border: 1px solid var(--border-card);
-  border-radius: 5px;
-  width: 30px;
-  height: 28px;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--text-muted);
-  cursor: pointer;
-  font-family: 'DM Mono', monospace;
-  transition: all 0.15s;
-  letter-spacing: 0.3px;
-}
-.alpha-btn:hover {
-  color: var(--sky-deep);
-  border-color: var(--sky-light);
-  background: rgba(56,174,224,0.1);
-}
-.alpha-btn.active {
-  color: var(--white);
-  border-color: var(--sky-primary);
-  background: var(--sky-primary);
-}
+.alpha-bar { max-width: 1280px; margin: 1rem auto 0; padding: 0 2rem; display: flex; flex-wrap: wrap; gap: 4px; }
+.alpha-btn { background: rgba(255,255,255,0.7); border: 1px solid var(--border-card); border-radius: 5px; width: 30px; height: 28px; font-size: 11.5px; font-weight: 600; color: var(--text-muted); cursor: pointer; font-family: 'DM Mono', monospace; transition: all 0.15s; }
+.alpha-btn:hover { color: var(--sky-deep); border-color: var(--sky-light); background: rgba(56,174,224,0.1); }
+.alpha-btn.active { color: var(--white); border-color: var(--sky-primary); background: var(--sky-primary); }
 .alpha-btn.all { width: 40px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
 
-/* ─── MAIN ──────────────────────────────────────────────── */
-main {
-  position: relative;
-  z-index: 1;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1.75rem 2rem 5rem;
-}
+main { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 1.75rem 2rem 5rem; }
 
-/* ─── SECTION GROUPS ───────────────────────────────────── */
 .letter-section { margin-bottom: 2rem; }
-.letter-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 1rem;
-}
-.letter-char {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--sky-primary);
-  line-height: 1;
-  width: 32px;
-  text-align: center;
-}
-.letter-line {
-  flex: 1;
-  height: 1px;
-  background: var(--divider);
-}
-.letter-cnt {
-  font-size: 11px;
-  color: var(--text-faint);
-  font-variant-numeric: tabular-nums;
-  font-family: 'DM Mono', monospace;
-}
+.letter-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.letter-char { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: var(--sky-primary); line-height: 1; width: 32px; text-align: center; }
+.letter-line { flex: 1; height: 1px; background: var(--divider); }
+.letter-cnt { font-size: 11px; color: var(--text-faint); font-variant-numeric: tabular-nums; font-family: 'DM Mono', monospace; }
 
-/* ─── GRID ──────────────────────────────────────────────── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
-  gap: 1rem;
-}
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 1rem; }
 
-/* ─── CARD ──────────────────────────────────────────────── */
 .card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-card);
-  border-radius: 14px;
-  padding: 1.35rem 1rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), border-color 0.2s, box-shadow 0.2s, background 0.2s;
-  cursor: default;
+  background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 14px;
+  padding: 1.35rem 1rem 1rem; display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 8px; position: relative; overflow: hidden;
+  transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), border-color 0.2s, box-shadow 0.2s;
   animation: cardIn 0.3s ease both;
   box-shadow: 0 1px 8px rgba(56,174,224,0.1);
 }
-
-@keyframes cardIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--sky-mid), var(--sky-light));
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-4px) scale(1.01);
-  border-color: var(--border-hover);
-  background: var(--bg-card-hover);
-  box-shadow: 0 10px 32px rgba(56,174,224,0.2), 0 0 0 1px rgba(56,174,224,0.25);
-}
+@keyframes cardIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--sky-mid), var(--sky-light)); opacity: 0.6; transition: opacity 0.2s; }
+.card:hover { transform: translateY(-4px) scale(1.01); border-color: var(--border-hover); background: var(--bg-card-hover); box-shadow: 0 10px 32px rgba(24,152,212,0.35), 0 0 0 1px rgba(93,173,226,0.4); }
 .card:hover::after { opacity: 1; }
 
-/* ─── AVATAR ────────────────────────────────────────────── */
-.avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2.5px solid var(--sky-pale);
-  background: var(--sky-faint);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: border-color 0.2s;
-  position: relative;
-}
-.card:hover .avatar { border-color: var(--sky-mid); }
+.avatar { width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 2.5px solid var(--card-avatar-border); background: var(--card-avatar-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.2s; }
+.card:hover .avatar { border-color: var(--sky-light); }
 .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.avatar-initials { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--sky-light); line-height: 1; user-select: none; }
 
-.avatar-initials {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--sky-primary);
-  letter-spacing: 0.5px;
-  line-height: 1;
-  user-select: none;
-}
-
-/* ─── CARD CONTENT ──────────────────────────────────────── */
-.card-name {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.35;
-  word-break: break-word;
-  letter-spacing: 0.1px;
-}
-
-.card-nip {
-  font-size: 10px;
-  color: var(--text-faint);
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 0.8px;
-}
-
-.card-divider {
-  width: 28px;
-  height: 1px;
-  background: var(--divider);
-  flex-shrink: 0;
-}
-
+.card-name { font-size: 12.5px; font-weight: 600; color: var(--card-text-primary); line-height: 1.35; word-break: break-word; }
+.card-nip { font-size: 10px; color: var(--card-text-faint); font-family: 'DM Mono', monospace; letter-spacing: 0.8px; }
+.card-divider { width: 28px; height: 1px; background: var(--card-divider); flex-shrink: 0; }
 .drive-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  width: 100%;
-  background: rgba(56,174,224,0.1);
-  border: 1px solid rgba(56,174,224,0.3);
-  border-radius: 7px;
-  padding: 8px 10px;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--sky-deep);
-  font-family: 'DM Sans', sans-serif;
+  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  width: 100%; background: rgba(93,173,226,0.15); border: 1px solid rgba(93,173,226,0.4);
+  border-radius: 7px; padding: 8px 10px; font-size: 11px; font-weight: 600;
+  color: var(--sky-light); font-family: 'DM Sans', sans-serif; cursor: pointer;
+  transition: all 0.18s; letter-spacing: 0.3px; margin-top: auto;
   text-decoration: none;
-  transition: all 0.18s;
-  letter-spacing: 0.3px;
-  margin-top: auto;
 }
-.drive-btn:hover {
-  background: rgba(56,174,224,0.2);
-  border-color: rgba(56,174,224,0.55);
-  color: var(--sky-deep);
-}
+.drive-btn:hover { background: rgba(93,173,226,0.28); border-color: rgba(93,173,226,0.7); color: #d6eaf8; }
 
-/* ─── EMPTY STATE ───────────────────────────────────────── */
-#emptyState {
-  display: none;
-  text-align: center;
-  padding: 5rem 2rem;
-  color: var(--text-muted);
-}
-#emptyState .empty-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 1.25rem;
-  background: var(--sky-faint);
-  border: 1px solid var(--border-card);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#emptyState h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
-}
+#emptyState { display: none; text-align: center; padding: 5rem 2rem; color: var(--text-muted); }
+#emptyState .empty-icon { width: 56px; height: 56px; margin: 0 auto 1.25rem; background: var(--sky-faint); border: 1px solid var(--border-card); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+#emptyState h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem; }
 #emptyState p { font-size: 13px; }
 
-/* ─── RESPONSIVE ────────────────────────────────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(10,61,92,0.55);
+  backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: #fff; border-radius: 20px; padding: 2.25rem 2rem 2rem;
+  width: min(400px, 90vw); position: relative;
+  box-shadow: 0 24px 60px rgba(10,61,92,0.25), 0 0 0 1px rgba(56,174,224,0.2);
+  animation: modalIn 0.25s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes modalIn { from { opacity:0; transform: scale(0.88) translateY(20px); } to { opacity:1; transform: scale(1) translateY(0); } }
+.modal-lock {
+  width: 52px; height: 52px; border-radius: 50%; background: var(--sky-faint);
+  border: 2px solid var(--sky-pale); display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.1rem; color: var(--sky-primary);
+}
+.modal-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; text-align: center; color: var(--text-primary); margin-bottom: 0.3rem; }
+.modal-sub { font-size: 12.5px; color: var(--text-muted); text-align: center; margin-bottom: 1.4rem; line-height: 1.5; }
+.modal-name-chip {
+  display: inline-block; background: var(--sky-faint); border: 1px solid var(--sky-pale);
+  border-radius: 20px; padding: 4px 14px; font-size: 11.5px; font-weight: 600;
+  color: var(--sky-deep); margin: 0 auto 1.25rem; display: block; text-align: center;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pw-wrap { position: relative; margin-bottom: 0.8rem; }
+#pwInput {
+  width: 100%; height: 46px; border: 1.5px solid var(--sky-light); border-radius: 10px;
+  padding: 0 46px 0 14px; font-size: 15px; font-family: 'DM Mono', monospace;
+  color: var(--text-primary); letter-spacing: 2px; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#pwInput:focus { border-color: var(--sky-mid); box-shadow: 0 0 0 3px rgba(56,174,224,0.2); }
+#pwInput.error { border-color: #e05555; box-shadow: 0 0 0 3px rgba(224,85,85,0.15); animation: shake 0.35s ease; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
+.pw-toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text-muted); padding: 4px; transition: color 0.15s; }
+.pw-toggle:hover { color: var(--sky-deep); }
+.pw-error { font-size: 11.5px; color: #d94f4f; text-align: center; min-height: 16px; margin-bottom: 0.75rem; }
+.modal-btn {
+  width: 100%; height: 46px; border-radius: 10px; border: none;
+  background: linear-gradient(135deg, var(--sky-primary), var(--sky-deep));
+  color: #fff; font-size: 14px; font-weight: 600; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; letter-spacing: 0.4px;
+  transition: opacity 0.2s, transform 0.15s; box-shadow: 0 4px 16px rgba(24,152,212,0.35);
+}
+.modal-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+.modal-btn:active { transform: translateY(0); }
+.modal-close {
+  position: absolute; top: 14px; right: 14px; background: none; border: none;
+  cursor: pointer; color: var(--text-faint); padding: 6px; border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+.modal-close:hover { color: var(--text-primary); background: var(--sky-faint); }
+
 @media (max-width: 700px) {
   .header-inner { padding: 0 1rem; }
   .hero { padding: 2.5rem 1rem 2rem; }
@@ -550,11 +248,10 @@ main {
 </head>
 <body>
 
-<!-- ── HEADER ───────────────────────────────────────────── -->
 <header>
   <div class="header-inner">
     <div class="logo-wrap">
-      <img src="logo_imigrasi.png" alt="Logo Imigrasi" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=logo-fallback>IM</span>'">
+      <img src="logo_imigrasi.png" alt="Logo" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=logo-fallback>IM</span>'">
     </div>
     <div class="header-text">
       <h1>Kantor Imigrasi Kelas I TPI Tanjungpinang</h1>
@@ -567,45 +264,34 @@ main {
   </div>
 </header>
 
-<!-- ── HERO ─────────────────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-eyebrow">Data Kepegawaian Digital</div>
-  <h2>Direktori <em>Pegawai</em></h2>
+  <div class="hero-eyebrow">Sistem Manajemen Data Pegawai</div>
+  <h2>SI <em>MANTAP</em></h2>
   <p class="hero-sub">Cari data kepegawaian berdasarkan nama atau NIP</p>
   <div class="search-wrap">
     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
       <circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.8-3.8"/>
     </svg>
-    <input type="text" id="searchInput" placeholder="Ketik nama atau NIP pegawai…" autocomplete="off" spellcheck="false">
-    <button class="search-clear" id="searchClear" onclick="clearSearch()" title="Hapus pencarian">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <path d="M18 6 6 18M6 6l12 12"/>
-      </svg>
+    <input type="text" id="searchInput" placeholder="Ketik nama pegawai…" autocomplete="off" spellcheck="false">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()" title="Hapus">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
   </div>
 </section>
 
-<!-- ── STATS & FILTER ───────────────────────────────────── -->
 <div class="stats-bar">
   <div class="stat-chip">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-    </svg>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
     <span>Total <span class="num" id="totalCount">0</span> pegawai terdaftar</span>
   </div>
   <div class="stat-results" id="resultsInfo"></div>
 </div>
-
 <div class="alpha-bar" id="alphaBar"></div>
 
-<!-- ── MAIN ─────────────────────────────────────────────── -->
 <main>
   <div id="emptyState">
     <div class="empty-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a9cbf" stroke-width="1.5">
-        <circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.8-3.8"/>
-      </svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a9cbf" stroke-width="1.5"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.8-3.8"/></svg>
     </div>
     <h3>Tidak Ditemukan</h3>
     <p>Tidak ada pegawai yang cocok dengan pencarian Anda.</p>
@@ -613,115 +299,197 @@ main {
   <div id="gridContainer"></div>
 </main>
 
+<div class="modal-overlay" id="pwModal" onclick="handleOverlayClick(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" title="Tutup">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-lock">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    </div>
+    <div class="modal-title">Akses Odner</div>
+    <p class="modal-sub">Masukkan password untuk melihat data</p>
+    <div class="modal-name-chip" id="modalName">—</div>
+    <div class="pw-wrap">
+      <input type="password" id="pwInput" placeholder="Masukkan password…" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()">
+      <button class="pw-toggle" onclick="togglePw()" title="Tampilkan/sembunyikan">
+        <svg id="eyeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
+    <div class="pw-error" id="pwError"></div>
+    <button class="modal-btn" onclick="doLogin()">Buka</button>
+  </div>
+</div>
+
 <script>
 let employees = [
-  { nama: "ALEXANDER SIANTURI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1pismI51ELdYCcO8yiIe_tmSoQkBxE41F?usp=drive_link" },
-  { nama: "AYU LESTARI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1aCgb0luzMffxBAGDmCsvatLP9Q0hepG2?usp=drive_link" },
-  { nama: "AFDHAL YUDHA FAHREZI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1zmkctN51i-xiSMjX8bGVX-EmUKrpLT8Y?usp=drive_link" },
-  { nama: "ALHUWAYRIST ROYHAN APRIYANTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1prKt0taOyTi_rSbsvNvyPmGk9EIUizHv?usp=drive_link" },
-  { nama: "ALWIS KURNIANTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1qrP6VlJaNikRyrIKOWHP3BZzS_95L1HC?usp=drive_link" },
-  { nama: "ANGGA RESTU PUTRA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/18wQTO3JIGLlP6n7suKOkvl_k2vzkw2Wt?usp=drive_link" },
-  { nama: "APRILIA FLORA INDAH REKTY", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/11uy5sCLLU4CbXWqQsC0fb_k3J0Y_97aW?usp=drive_link" },
-  { nama: "APRIYANTO HERI SUYITNO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1KwOu13pBIaKmjoilHNsgI2s5vlUOz5Xl?usp=drive_link" },
-  { nama: "ARDIAN NUGRAHA YUDHA WIBOWO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1i9mwY3wn3mwSJEDAYP6DNZclJZZrZquM?usp=drive_link" },
-  { nama: "ARI WAHYUDI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1_4WBsOOgNsjpn7cf7B_NvcOlUMtEuCgq?usp=drive_link" },
-  { nama: "BAHARUDDIN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/13-Flo6UX5IWhPnSS2n3xv8Ls-PUpO3sb?usp=drive_link" },
-  { nama: "BERLIN FRANSISCO FERNANDO S.", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1VTiCJILRKGoRsmI1TZmFZMnQ0F0Q5U1h?usp=drive_link" },
-  { nama: "BRAMA SETIA AGUS RIADY", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/14f5hdu4OB-u_35QwPLWh30Sz6gcChFMl?usp=drive_link" },
-  { nama: "BUDIONO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1xyws-hHhmiQocM5_1VQzR_9A9SPx419p?usp=drive_link" },
-  { nama: "CHAIRULY", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1l2DIhmCfB_exaJlsj_LvTzOTmSwunddJ?usp=drive_link" },
-  { nama: "DEAN CROSSTIAN AMRICO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Sab17LyKwNUt3oPp6GVVvbtgsLJNshj_?usp=drive_link" },
-  { nama: "DENLY FERDINAND MANURUNG", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1o-BQjIEH48PGhQlghGM8BLdGixPYHG-2?usp=drive_link" },
-  { nama: "DEWI SUSANTI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1NTvZDLISZWE8591KYt2fAI_xWnogdTjo?usp=drive_link" },
-  { nama: "DIAN SUMATRI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1eVqYUD8VUKGCK75R9WTlHt5E5uuVuWPf?usp=drive_link" },
-  { nama: "DANIEL MAXRINTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1qR8s6ICtzTa1PBGDu1EJn6b1NTiTGSBJ?usp=drive_link" },
-  { nama: "DIAN SANDRA GUSMIDANA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/15GIiseggo6iJ60CAwzEzRaOyIpEG0COz?usp=drive_link" },
-  { nama: "DWI NOVITA NANDA LESTARI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1C0QVer1-sEVIl5R0Keq_KG7Q5qkBFOLN?usp=drive_link" },
-  { nama: "EDWIN BUDI SANTIKO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1kb0yVIAoWgRwrpZjFL-Eug7OFKrC9qbI?usp=drive_link" },
-  { nama: "EKA KURNIAWATI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1yrzbWaJIAy3Ml2M9GRTH9op_5nznZ6Nv?usp=drive_link" },
-  { nama: "ERWIN HARIYADI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1_ov-s26W6_UhlrZUjeMBoK3NfxfGYYxc?usp=drive_link" },
-  { nama: "FATIMAH ZAHARA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1PSKbxjuwqlTQqXLSIIgsVLt-eeBdQHQq?usp=drive_link" },
-  { nama: "FAIZA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1eN3aadArOvzWiwfQMOCRHgjdtmz_zZQw?usp=drive_link" },
-  { nama: "FIFY ROSMITA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1FSMrK1mDPVR3n_gUXGM23cmZC0fshYxE?usp=drive_link" },
-  { nama: "FIKKY AMIRULLAH", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1EqrJJmqYjdeM6ICAygk5r6ETssNxgCwa?usp=drive_link" },
-  { nama: "FIRDAUS", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1lir6gg10GAA3oWhvAG7SJDP6P3O-8HcE?usp=drive_link" },
-  { nama: "GANDHI AGUNG WIBOWO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1SUBq9uVYvMMRWyh_pJPb57fisBeheuvY?usp=drive_link" },
-  { nama: "HARYONO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1OlI2iOXCxS9HPaRJNjXAOnEruH_HjU9D?usp=drive_link" },
-  { nama: "HERLIS FAHMIL QUR'ANI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Snh9N0niuat8Wd1UnNl6jV00nnWBtyyR?usp=drive_link" },
-  { nama: "HOT PARULIAN TONDANG", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1b3ZovqptHKREqzmor2s0AWc13wgik6_5?usp=drive_link" },
-  { nama: "I GUSTI NGURAH DEVA ADITYA LAKSMANA PUTRA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1fr-ZDPAtsG-ZNfelfUONSQmsZ6QqFGZk?usp=drive_link" },
-  { nama: "INDRA SAHPUTRA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1ZMF_enb30I7o0Aob6NYEC6AJm3Sjt2lc?usp=drive_link" },
-  { nama: "IQBAL KURNIA FAJAR", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/17qXnkcTxAFbb0oLYiNoU2zp86jwK-Pwx?usp=drive_link" },
-  { nama: "JOSE HANZEN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1rFAKo5Dcaw70BoSY2Jiaihsq1nGlngZi?usp=drive_link" },
-  { nama: "KUSMARTONO W.", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1FP8T3B9NNsvKPG4fGyx2PzPAfuQBLNj8?usp=drive_link" },
-  { nama: "LIA ANDINI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1e3rONOAS2gaLUAVoeh-ra4aJnH7HDj6u?usp=drive_link" },
-  { nama: "LUSIANA TANIA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1FHphxFhIkl8sX3pXY2nzyYybuGc4OjVc?usp=drive_link" },
-  { nama: "M. FARHAN ZAQI ZHILAL", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1kbDu8RPbIvWpmtZo3HwUTlx92eJBnwnB?usp=drive_link" },
-  { nama: "MADE HERY SUSANTA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1gQSb9r3HedSAoSvGgfCv8oolOEvpRhLW?usp=drive_link" },
-  { nama: "MARGI PURNAMA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1GHKWnD3Sjf2lpddjha6qkbnGp2XXK7v2?usp=drive_link" },
-  { nama: "MASMUSA SABARIN S. PITUN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Vp8BORKNuN44hZ4R66jKzG3djdpnmcEf?usp=drive_link" },
-  { nama: "MIKHAEL MARCELINO PASARIBU", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1VEq08gnHfU9i15gnz7WfwzTRRrZyqGI5?usp=drive_link" },
-  { nama: "MOCH YAZID ALFALIKUL ISBAH", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1hf6RwSdzuvlOkbP2rPxm0AXRnB7udCnf?usp=drive_link" },
-  { nama: "MOHAMMAD SALMAN AL FARISI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/11JXo2r-Ne8ZNTnfkAygK2VGNNRqzEZ7Y?usp=drive_link" },
-  { nama: "MOHD. ILHAM", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1WpkkmvS5q8ZVbDyaEAKdZx9ocbxlTjtK?usp=drive_link" },
-  { nama: "MUHAMMAD AULIA RAMADHAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1EOMdiY80VIN3NIeZZWCUmvGtcnx8F7nr?usp=drive_link" },
-  { nama: "MUHAMMAD AKRAM HUTASUHUT", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/16cM110T_c9OkZZNQ9nAKvsb6NuFq7kTD?usp=drive_link" },
-  { nama: "MUHAMMAD DENNY RIDWAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1YClZ1lyBqnIIaYEl_JLemXFfOe3xAQhd?usp=drive_link" },
-  { nama: "MUHAMMAD FATONY B. SETYAWAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/15JhWdKGzdL6mUHmvgJPuaL0RgX4j41It?usp=drive_link" },
-  { nama: "MUHAMMAD IRWANSYAH", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1-iO3XbkInPEFDZ7ZCIRKUqEXAPSFZmE5?usp=drive_link" },
-  { nama: "MUHAMMAD LUTHFIE ARIANDI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/10KurjeMCA-yi8qX5vvhqHAqAVQh75e5O?usp=drive_link" },
-  { nama: "MUHAMMAD NAUFAL DZAKY", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1SXGgpIm4AK3uH6lJ8c0Rhy_vujRroTyZ?usp=drive_link" },
-  { nama: "NAJWA MAHABATA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1c0kt3jQAy0OcKYZUwGYfQmA4ObvIb67u?usp=drive_link" },
-  { nama: "NATASYA ALYA ZAHIRA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1h2Nxvfw94lDDfuk0RfPJN3xB1AhNbR-k?usp=drive_link" },
-  { nama: "NIKI SYAMSIDAR", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1paKtp6V-gq-jDUDFMkXu5z-UmqxqCbWB?usp=drive_link" },
-  { nama: "NOLA VIDYA DEWI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1oviR3mhQSJ1mGesNgZkP7THjFyGhSRBG?usp=drive_link" },
-  { nama: "NOVIA VALENTINA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1f-GzT-KwMUZt94phSwnKeHU0NO9zK-9O?usp=drive_link" },
-  { nama: "NURI FITRIA SARI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1HMZy9A6Nbz8B8b__lcYKhdz69jY0FWZP?usp=drive_link" },
-  { nama: "ONGGO SATRIO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Z47DK3Xd2drsDOZHmCK34gFQt99G2rM3?usp=drive_link" },
-  { nama: "ORLANDA OKTA VERDIAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1OAX8SkR_veBuUkF28WEijG7ie_eykNEp?usp=drive_link" },
-  { nama: "PRIZZA REZEKY OKTACESAR", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/13BjmLnwULTDO8S3-aK1UUnipgUyj2JPk?usp=drive_link" },
-  { nama: "RAJA MUHAMMAD FIKRA YUDHA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1q6L4f4kNTzjJhNwYCGCbU-iuQgpWKnxy?usp=drive_link" },
-  { nama: "RAJA VIRGANDI AGUSTI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1AQpwtPWIH3A06-JN_5msZ7alzUnFeJkb?usp=drive_link" },
-  { nama: "RENDI PUJO TRIONO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/13c2jkAhjokTN1qnQEfe8w7-wlqqzwiPq?usp=drive_link" },
-  { nama: "RIAN KASPARI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1AEOPXsd-33mbSJ_1rM88WNkTzySzLV6d?usp=drive_link" },
-  { nama: "RIDWAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1_kKmrX4vkBe2pD89NcQ5zQQJLIlWAuE_?usp=drive_link" },
-  { nama: "RIKI SUWASONO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Wwp0FkWMw2rIG9tjGp4oKkA3fdHc_kx9?usp=drive_link" },
-  { nama: "RINDA IKHMAH ELSHA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/16Z0MuB-9GB3EH-uXfLl8Sx9Sbgl58qZD?usp=drive_link" },
-  { nama: "RISKA RAMADANI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1sqnAALU9LDouleJ_yCJNjnHVFIydhF8k?usp=drive_link" },
-  { nama: "ROBBY MARTEJA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1IRDsoWgbbrdJeOg1FKS1hF_kBfN8Iit-?usp=drive_link" },
-  { nama: "RONALDO RIANTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1ddyIZUqXJ6A7OtK6Cgja4bYG2L12Xbrz?usp=drive_link" },
-  { nama: "RYANDA ADLIS", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/16HLqha3i1mXZdTheq3gjUaOtVTA6jEMY?usp=drive_link" },
-  { nama: "SANDY RIFKI ENRICKO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1M5vZB8icVyxtcPEhiPReKG3w1ti_B7eL?usp=drive_link" },
-  { nama: "SILVI WIRA WANGSA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1PHAiYDtbzCOtSdEvqiEwdaYtSzGPPWsl?usp=drive_link" },
-  { nama: "SINTIA RIZKI WAHYUNINGSIH", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1RcQ4aJazMO-aF5Qq0xLKL8jzXa8Vqv1y?usp=drive_link" },
-  { nama: "SONDANG SIREGAR", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Wvsnmb3ifPXP827K-yrc6S1xQbQi1NiB?usp=drive_link" },
-  { nama: "SOULTAN FAREL", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Tij5wydQkJWYlaxlBxR7F2mJtrtgO8hN?usp=drive_link" },
-  { nama: "SRI DESWITA UNDARIYANI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1gXDaSNQW7t_Bu1iFA9OiHk2Nh7llgS9I?usp=drive_link" },
-  { nama: "TAUFIQ NUGRAHA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/19WfX81OenQKYw2yi_AFH31QsP5BoLuyl?usp=drive_link" },
-  { nama: "TEDDY SETYAWAN", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1HDx2rkf6enTpKAF_wYzSZFiTNT4I0vjM?usp=drive_link" },
-  { nama: "THERESIA IMELDA SIHITE", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Xp0j5UF6LAkItLsuFEW1yVNXNdfTa40F?usp=drive_link" },
-  { nama: "THOMY ARUNG PALIMBUNGA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1S0HwjVEj41XDN1o-WB-1x6eYgAtFxjb_?usp=drive_link" },
-  { nama: "TRY RAHAYU", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1RddFqIkqWQDzlwXATJvZtOxrEwqL3k83?usp=drive_link" },
-  { nama: "TRISNA ROZALINDA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1ZCOMPLIDjYGeWbZ5AO5g-VIqnQNCIslK?usp=drive_link" },
-  { nama: "USI HERLINA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1_5yoSlLx50ViXrpA2Z8VLDI_HEPCpZ1i?usp=drive_link" },
-  { nama: "VINCENTIUS", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1Za2NK_VWp3o-XESQ1tmyqdtUoHGWkynE?usp=drive_link" },
-  { nama: "WAHYU HIDAYAT", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1TsFSRjNrXVvVK63oBpYqGp1dWvn1r_n6?usp=drive_link" },
-  { nama: "WIGANDA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1x5xNMzI8T9HR_6Jsd2bAv_Sf_Ary3EvG?usp=drive_link" },
-  { nama: "WINARTO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/14Pec1EjJZhsrJKcglKy0IARWhF9pIeVY?usp=drive_link" },
-  { nama: "YANARIA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1EDwQaEBubQWra2Ls5SF5ihmxpaVH43NG?usp=drive_link" },
-  { nama: "YONGKI SEPRIANCE", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1iF_XOolyKr8AvZJ0Afv3BjZuaQ9l5XYD?usp=drive_link" },
-  { nama: "YUDHA PRAWIRA PRADANA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1XxEI8oijnP4V9hvo5Re4QmhDysNolSie?usp=drive_link" },
-  { nama: "YUS SUDARSO NUGROHO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1jSxtkouwRRcMmuKzJrCdeSajxuMY9uOH?usp=drive_link" },
-  { nama: "ZEANLIS HENRICO", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/19lV_2JRIyyZI_DABRQhZD4ouZC8Ic8y1?usp=drive_link" },
-  { nama: "DESTIRA PERMATA ARYANDI", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1VgUVsS8nu4MKo9xXseS5d6jEkodyS8KA?usp=drive_link" },
-  { nama: "JORDY PRATAMA", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1ldLMnZwhzgFUB2oDuLryHhydxFmh7GW-?usp=drive_link" },
-  { nama: "KEISHA ANDANI. K", nip: "", foto: "", drive: "https://drive.google.com/drive/folders/1W98HCUPdzyrgO5tAqQSX1z-IzRYwGwl0?usp=drive_link" },
+  { nama: "ERWIN HARIYADI", password: "IMI001", foto: "", drive: "https://drive.google.com/drive/folders/11zEOiuFQe42re2URFYXawycSJF8ZUw52?usp=drive_link" },
+  { nama: "ROBBY MARTEJA", password: "IMI002", foto: "", drive: "https://drive.google.com/drive/folders/1rX7deg9boKYKa4JMcawVCB5ND6g5d4LR?usp=drive_link" },
+  { nama: "DANIEL MAXRINTO", password: "IMI003", foto: "", drive: "https://drive.google.com/drive/folders/1SwI346FGPMlTjucogc6LDP15uy2C1Ald?usp=drive_link" },
+  { nama: "MUHAMMAD DENNY RIDWAN", password: "IMI004", foto: "", drive: "https://drive.google.com/drive/folders/1VjELH0OxN-EosEE82EK7Z_pJDIUlem3y?usp=drive_link" },
+  { nama: "KUSMARTONO W", password: "IMI005", foto: "", drive: "https://drive.google.com/drive/folders/10-Bi0ZLlmWeWLwvsiKRRgcETn4GKV1Ic?usp=drive_link" },
+  { nama: "MADE HERY SUSANTA", password: "IMI006", foto: "", drive: "https://drive.google.com/drive/folders/1sZ_y_EE8MlQNpC1t0RS216YlHOB5KzlN?usp=drive_link" },
+  { nama: "SRI DESWITA UNDARIYANI", password: "IMI007", foto: "", drive: "https://drive.google.com/drive/folders/1VE1UVrbW3bzCMgwjoeedO8DSFWtmg48n?usp=drive_link" },
+  { nama: "LIA ANDINI", password: "IMI008", foto: "", drive: "https://drive.google.com/drive/folders/136kMrTvbBE_srCRQBVxJMQ5qL82evS2n?usp=drive_link" },
+  { nama: "BAHARUDDIN", password: "IMI009", foto: "", drive: "https://drive.google.com/drive/folders/1bIGQB1V9oyddyXsF7jnDJ252BBe3XPHH?usp=drive_link" },
+  { nama: "ALEXANDER SIANTURI", password: "IMI010", foto: "", drive: "https://drive.google.com/drive/folders/1uvcmkk5dL0jiSCq_aGB5vfgPz7QeQ5_h?usp=drive_link" },
+  { nama: "YONGKI SEPRIANCE", password: "IMI011", foto: "", drive: "https://drive.google.com/drive/folders/1DBHIV7L34I8DkSfNKEeXTKY_vwfLU3zQ?usp=drive_link" },
+  { nama: "SANDY RIFKI ENRICKO", password: "IMI012", foto: "", drive: "https://drive.google.com/drive/folders/1X3534neSJ5sZt0d4C2uFm9TyyosiCCL-?usp=drive_link" },
+  { nama: "GANDHI AGUNG WIBOWO", password: "IMI013", foto: "", drive: "https://drive.google.com/drive/folders/1rsgv_abHxVMnLp6ze2SpaGpPow79yylZ?usp=drive_link" },
+  { nama: "FIKKY AMIRULLAH", password: "IMI014", foto: "", drive: "https://drive.google.com/drive/folders/1uPNUSq5l6mM9kHxrUx2Ev9bN-Zfq5UDa?usp=drive_link" },
+  { nama: "EDWIN BUDI SANTIKO", password: "IMI015", foto: "", drive: "https://drive.google.com/drive/folders/1cllLBJ-1ww6Xeh9kiI5NExAgor0d0HhC?usp=drive_link" },
+  { nama: "HERLIS FAHMIL QUR\'ANI", password: "IMI016", foto: "", drive: "https://drive.google.com/drive/folders/1FFkDy95c6Q_HKMLA7r6sP9dzeoew-RTI?usp=drive_link" },
+  { nama: "FAIZA", password: "IMI017", foto: "", drive: "https://drive.google.com/drive/folders/12Cldgq-PhetF_4j8fDu_nJtLdUSprVrQ?usp=drive_link" },
+  { nama: "DIAN SANDRA GUSMIDANA", password: "IMI018", foto: "", drive: "https://drive.google.com/drive/folders/1nKm_J6bcjyWwFS08VKYWSStwPKwcv4zu?usp=drive_link" },
+  { nama: "TRISNA ROZALINDA", password: "IMI019", foto: "", drive: "https://drive.google.com/drive/folders/1715NPQzFaR98fuJSI6qJaKphhRV4X2Ca?usp=drive_link" },
+  { nama: "DENLY FERDINAND MANURUNG", password: "IMI020", foto: "", drive: "https://drive.google.com/drive/folders/11m67EWj6uoKnHalp_4TQqietk_ULrXGj?usp=drive_link" },
+  { nama: "ANGGA RESTU PUTRA", password: "IMI021", foto: "", drive: "https://drive.google.com/drive/folders/1Yq31i88NaPZH0QzgsLbtIVmN-hm5g188?usp=drive_link" },
+  { nama: "RIDWAN", password: "IMI022", foto: "", drive: "https://drive.google.com/drive/folders/1rN0W31ESEehGKIBJmVBvWddxbLKbYK3a?usp=drive_link" },
+  { nama: "INDRA SAHPUTRA", password: "IMI023", foto: "", drive: "https://drive.google.com/drive/folders/1T94nsV7nRQBF5DKKwKTmFBRujUYa5rEO?usp=drive_link" },
+  { nama: "BRAMA SETIA AGUS RIADY", password: "IMI024", foto: "", drive: "https://drive.google.com/drive/folders/1XTKbO6JHPwzVR7x-deFrK0mxB_MzntsH?usp=drive_link" },
+  { nama: "DIAN SUMANTRI", password: "IMI025", foto: "", drive: "https://drive.google.com/drive/folders/1LujzVVgCdtRAPe8Fteo15mkQeTZBJl1T?usp=drive_link" },
+  { nama: "CHAIRULY", password: "IMI026", foto: "", drive: "https://drive.google.com/drive/folders/1jrprcY7S6vbQus4Vm1aJa8lCOpypxXM0?usp=drive_link" },
+  { nama: "APRIYANTO HERRY SUYITNO", password: "IMI027", foto: "", drive: "https://drive.google.com/drive/folders/1w9vY5bPpTI_ASPmjK4GYJLZAHlst9W0K?usp=drive_link" },
+  { nama: "MOHD. ILHAM", password: "IMI028", foto: "", drive: "https://drive.google.com/drive/folders/17AY3w49FoZJxH69DmBR25oPa-evUrVgB?usp=drive_link" },
+  { nama: "ARI WAHYUDI", password: "IMI029", foto: "", drive: "https://drive.google.com/drive/folders/1J4CjnlyEqGLZuOfLTw4k9NV1idEAATT0?usp=drive_link" },
+  { nama: "VINCENTIUS", password: "IMI030", foto: "", drive: "https://drive.google.com/drive/folders/1i6rup0oA8dOsN6OAqA-cfidxhaoEHcmM?usp=drive_link" },
+  { nama: "RYANDA ADLIS", password: "IMI031", foto: "", drive: "https://drive.google.com/drive/folders/19LXMuMAcduuZKbCcJDKWkres7tSmFzzJ?usp=drive_link" },
+  { nama: "FATIMAH ZAHARA", password: "IMI032", foto: "", drive: "https://drive.google.com/drive/folders/1elEobYE0PimpnV7OjJUz7CTtRjOKp9sb?usp=drive_link" },
+  { nama: "SONDANG SIREGAR", password: "IMI033", foto: "", drive: "https://drive.google.com/drive/folders/17pSOikt3ZwscbYed6yjBqMWhAGT4JvIj?usp=drive_link" },
+  { nama: "DEWI SUSANTI", password: "IMI034", foto: "", drive: "https://drive.google.com/drive/folders/1xf-fX7IPK-A9Y8IgNustJyGL6tYmf9hq?usp=drive_link" },
+  { nama: "YANARIA", password: "IMI035", foto: "", drive: "https://drive.google.com/drive/folders/1RmaHePfLeeG-IHnNUet8oFqQLC6aPXpd?usp=drive_link" },
+  { nama: "TAUFIQ NUGRAHA", password: "IMI036", foto: "", drive: "https://drive.google.com/drive/folders/1VbG3eWdhMpazVNb4XhIxtKO_YURdipY8?usp=drive_link" },
+  { nama: "W I N A R T O", password: "IMI037", foto: "", drive: "https://drive.google.com/drive/folders/1fKXwQ3_XeENKLLeKBIsRRAzObFTC0NLm?usp=drive_link" },
+  { nama: "EKA KURNIAWATI", password: "IMI038", foto: "", drive: "https://drive.google.com/drive/folders/1CR55aXAf0jzYG6d7Kyo86kXTsN9IGpRt?usp=drive_link" },
+  { nama: "HARYONO", password: "IMI039", foto: "", drive: "https://drive.google.com/drive/folders/1_ONFtgbYPGp7ZquaUsP_OGwxZ5Jxv5lc?usp=drive_link" },
+  { nama: "ONGGO SATRIO", password: "IMI040", foto: "", drive: "https://drive.google.com/drive/folders/18ZhTsLoZk2ZZqH4o46w2qCGkKd05b9Jn?usp=drive_link" },
+  { nama: "MASMUSA SARABATI S PITUN", password: "IMI041", foto: "", drive: "https://drive.google.com/drive/folders/1NL3obEtjyhqkOoGrX-LMyg3YVMkwCjfj?usp=drive_link" },
+  { nama: "B U D I O N O", password: "IMI042", foto: "", drive: "https://drive.google.com/drive/folders/1wTL15H-VjXErnup4h0JKmFH01Ato7zJ0?usp=drive_link" },
+  { nama: "NIKI SYAMSIDAR", password: "IMI043", foto: "", drive: "https://drive.google.com/drive/folders/1juB1_mxUyWOvTp9F4_UsgQ493a5E9LVB?usp=drive_link" },
+  { nama: "USI HERLINA", password: "IMI044", foto: "", drive: "https://drive.google.com/drive/folders/1TFvHLVcnAdohKzUriCFC7ZAxXYZVfnap?usp=drive_link" },
+  { nama: "MARGI PURNAMA", password: "IMI045", foto: "", drive: "https://drive.google.com/drive/folders/1wpyveUPmgbIixSlEwnCWiY623iJe37_X?usp=drive_link" },
+  { nama: "THOMY ARUNG PALIMBUNGA", password: "IMI046", foto: "", drive: "https://drive.google.com/drive/folders/1bQ1YzWBLi9GA5UzeHzYoZa7F86rDIrM_?usp=drive_link" },
+  { nama: "MUHAMMAD IRWANSYAH", password: "IMI047", foto: "", drive: "https://drive.google.com/drive/folders/16Bg588Q_9QzPChFvYrvpjykjQ3dtN3il?usp=drive_link" },
+  { nama: "SOULTAN FAREL", password: "IMI048", foto: "", drive: "https://drive.google.com/drive/folders/1-_-B0xe4EwwrxQEKZR_hGCpw8x67Fgl_?usp=drive_link" },
+  { nama: "IQBAL KURNIA FAJAR", password: "IMI049", foto: "", drive: "https://drive.google.com/drive/folders/13U1mlPwGswzVJp_ATnHBUC7W0AXdBDHN?usp=drive_link" },
+  { nama: "MUHAMMAD AKRAM HUTASUHUT", password: "IMI050", foto: "", drive: "https://drive.google.com/drive/folders/1X_1-9n9bz_BXUMPfRA0X4ec5HNK6InQS?usp=drive_link" },
+  { nama: "M. FARHAN ZAQI ZHILAL", password: "IMI051", foto: "", drive: "https://drive.google.com/drive/folders/1E3WO5m6rErTUAPgx1ogS4DzOIOQttXs6?usp=drive_link" },
+  { nama: "RIKI SUWASONO", password: "IMI052", foto: "", drive: "https://drive.google.com/drive/folders/1TunYuIjs95_lFVavYi4F0n92Ft9XsWZ2?usp=drive_link" },
+  { nama: "TRI RAHAYU", password: "IMI053", foto: "", drive: "https://drive.google.com/drive/folders/1QYLkxzE9Ec0HJgSbHfAg6k5ytewuOql6?usp=drive_link" },
+  { nama: "WIGANDA", password: "IMI054", foto: "", drive: "https://drive.google.com/drive/folders/1wZEhjZPkgZ9aekISpxcKvjE6ZoU5CfWL?usp=drive_link" },
+  { nama: "RINDA IKHMAH ELSHA", password: "IMI055", foto: "", drive: "https://drive.google.com/drive/folders/1XIHFFXbtkcvJ4CUjZ_ZmodhKINbzbBqm?usp=drive_link" },
+  { nama: "BERLIN FRANSISCO FERNANDO S.", password: "IMI056", foto: "", drive: "https://drive.google.com/drive/folders/1LX0U3kXuItecS_5H4JafO0kX65YzkLU4?usp=drive_link" },
+  { nama: "DEAN CROSSTIAN AMRICO", password: "IMI057", foto: "", drive: "https://drive.google.com/drive/folders/189-LnS33ctLgXM5Yu1M7FKQ2IaKHbaH0?usp=drive_link" },
+  { nama: "LUSIANA TANIA", password: "IMI058", foto: "", drive: "https://drive.google.com/drive/folders/1aGB01rj4qDaOUOqY3MKwyKK0rAaQ5_6N?usp=drive_link" },
+  { nama: "YUDHA PRAWIRA PRADANA", password: "IMI059", foto: "", drive: "https://drive.google.com/drive/folders/1hyMu9OrPTXQ_yqi59fqhEsjoXUsVoAk4?usp=drive_link" },
+  { nama: "RISKA RAMADANI", password: "IMI060", foto: "", drive: "https://drive.google.com/drive/folders/1LlPjmzFDN-PbN6LIjK-D88QCuowF8Wdm?usp=drive_link" },
+  { nama: "RENDI PUJO TRIONO", password: "IMI061", foto: "", drive: "https://drive.google.com/drive/folders/1xBobUctQd4RKGxvTJTKEJlI59Ec6NPRO?usp=drive_link" },
+  { nama: "ALWIS KURNIANTO", password: "IMI062", foto: "", drive: "https://drive.google.com/drive/folders/1ZK1E4I4ZOqxFm1oCtkbm-514Wp4D4pdC?usp=drive_link" },
+  { nama: "RONALDO RIANTO", password: "IMI063", foto: "", drive: "https://drive.google.com/drive/folders/1RJAu2cXBH5KurgWu_Ze7zweq5X8WBSwQ?usp=drive_link" },
+  { nama: "YUS SUDARSO NUGROHO", password: "IMI064", foto: "", drive: "https://drive.google.com/drive/folders/1-CHqo2Uvxq-pSQwWyqlsJUAyVMRX8d3w?usp=drive_link" },
+  { nama: "JOSE HANZEN", password: "IMI065", foto: "", drive: "https://drive.google.com/drive/folders/1OX010F2jtfjFgx8ja4icxCa5cPuOCfkd?usp=drive_link" },
+  { nama: "RAJA VIRGANDI AGUSTI", password: "IMI066", foto: "", drive: "https://drive.google.com/drive/folders/1ote9K6VksuV6t2iWTZDDfGs0Qh5qguZz?usp=drive_link" },
+  { nama: "MUHAMMAD LUTHFIE ARIANDI", password: "IMI067", foto: "", drive: "https://drive.google.com/drive/folders/1P-pso-yp4Z5JRwTEho8tvwzC5mcSxQ8U?usp=drive_link" },
+  { nama: "NOLA VIDYA DEWI", password: "IMI068", foto: "", drive: "https://drive.google.com/drive/folders/1VvkMsII7jtkKsozH0hWaEFKM_Nfgy0Tt?usp=drive_link" },
+  { nama: "RIAN KASPARI", password: "IMI069", foto: "", drive: "https://drive.google.com/drive/folders/1x4_DtLIQXU5lNAlHUM_DDSVufKV08O94?usp=drive_link" },
+  { nama: "MUHAMAD AULIA RAMADHAN", password: "IMI070", foto: "", drive: "https://drive.google.com/drive/folders/1EG3cvzav8cgTrgd-y7xtlvSy5EkKkHQG?usp=drive_link" },
+  { nama: "MUHAMMAD NAUFAL DZAKY", password: "IMI071", foto: "", drive: "https://drive.google.com/drive/folders/12rg-cwArqxhiiNsN6upy2sONF_InSOz0?usp=drive_link" },
+  { nama: "FIFY ROSMITA", password: "IMI072", foto: "", drive: "https://drive.google.com/drive/folders/1hXBvtQ3U3I8qojbk8BlDD7SynAFoNzJB?usp=drive_link" },
+  { nama: "HOT PARULIAN TONDANG", password: "IMI073", foto: "", drive: "https://drive.google.com/drive/folders/1M3_fTy6fiwLXl0zuc9PSG3f2VWwjpN9r?usp=drive_link" },
+  { nama: "MOCH YAZID ALFALIKUL ISBAH", password: "IMI074", foto: "", drive: "https://drive.google.com/drive/folders/1NzKJuE8y3Oz--7Hkrul61CpZADelsVNV?usp=drive_link" },
+  { nama: "TEDDY SETYAWAN", password: "IMI075", foto: "", drive: "https://drive.google.com/drive/folders/1GSESQRyAdLAikRvmVA8AzatfeBKSs66W?usp=drive_link" },
+  { nama: "ARDIAN NUGRAHA YUDHA WIBOWO", password: "IMI076", foto: "", drive: "https://drive.google.com/drive/folders/105YQ4sBcdxU9dSg9KjzO-A8RWvsbMcZC?usp=drive_link" },
+  { nama: "NOVIA VALENTINA", password: "IMI077", foto: "", drive: "https://drive.google.com/drive/folders/1n16SNQ7hoOswRnM0MN8vFdhn61iFMNu5?usp=drive_link" },
+  { nama: "JORDY PRATAMA", password: "IMI078", foto: "", drive: "https://drive.google.com/drive/folders/1lSuAhRZ1rC7ebxbteWUJ05HoshaH9O3M?usp=drive_link" },
+  { nama: "NURI FITRIA SARI", password: "IMI079", foto: "", drive: "https://drive.google.com/drive/folders/1GegkFf5AoLRjgAbfP-91igIc3yElg0J0?usp=drive_link" },
+  { nama: "RAJA MUHAMMAD FIKRA YUDHA", password: "IMI080", foto: "", drive: "https://drive.google.com/open?id=1qD-JM0ww0xhCf20SrrW9Nn5QGB_SRt9h&usp=drive_copy" },
+  { nama: "ZEANLIS HENRICO", password: "IMI081", foto: "", drive: "https://drive.google.com/drive/folders/1QliRce0YFRctU0O7sP7DJ-wgTL5TEhwz?usp=drive_link" },
+  { nama: "DWI NOVITA NANDA LESTARI", password: "IMI082", foto: "", drive: "https://drive.google.com/drive/folders/10HU5e_CXH9u1jYKX5Vj2YVy8gLBh-7d7?usp=drive_link" },
+  { nama: "SILVI WIRA WANGSA", password: "IMI083", foto: "", drive: "https://drive.google.com/drive/folders/1JkHYvfTDxs8S5xM1SE2JUkSw2kGW3uD9?usp=drive_link" },
+  { nama: "PRIZZA REZEKY OKTACAESAR", password: "IMI084", foto: "", drive: "https://drive.google.com/drive/folders/1ZZsiwTWVyaHWiz3j9wWHk_9lCtza-tur?usp=drive_link" },
+  { nama: "ORLANDA OKTA VERDIAN", password: "IMI085", foto: "", drive: "https://drive.google.com/drive/folders/1SF-v-M388k2346LLHCu6NGxK3lzXYr6Z?usp=drive_link" },
+  { nama: "ALHUWAYRIST ROYHAN APRIYANTO", password: "IMI086", foto: "", drive: "https://drive.google.com/drive/folders/11Dp4yYof2r0qhZ47Oc1vLTGBdRBqInwf?usp=drive_link" },
+  { nama: "MOHAMMAD SALMAN AL FARISI", password: "IMI087", foto: "", drive: "https://drive.google.com/drive/folders/1n9TQ0PTjl2aZrwQgnO3iQLOcSXHy8IdJ?usp=drive_link" },
+  { nama: "NATASYA ALYA ZAHIRA", password: "IMI088", foto: "", drive: "https://drive.google.com/drive/folders/1jgD4_m-EuhwAy7-Uv_m-QSHx3XKdzdPM?usp=drive_link" },
+  { nama: "MIKHAEL MARCELINO PASARIBU", password: "IMI089", foto: "", drive: "https://drive.google.com/drive/folders/1T8bQDOBMGtH8sv9FqbYfp2bsHXDCi1fv?usp=drive_link" },
+  { nama: "NAJWA MAHABATA", password: "IMI090", foto: "", drive: "https://drive.google.com/drive/folders/1qDCiW0cwHdLmWfDT4sz8HlHww3R9Pa2i?usp=drive_link" },
+  { nama: "THERESIA IMELDA SIHITE", password: "IMI091", foto: "", drive: "https://drive.google.com/drive/folders/1Gc905SfDGjWIKsm48hMzndJ0fL4osu-P?usp=drive_link" },
+  { nama: "AFDAL YUDHA FAHREZI", password: "IMI092", foto: "", drive: "https://drive.google.com/drive/folders/10oV4Ij9UDMK6w0acbP9o6vCeVf9WoM1C?usp=drive_link" },
+  { nama: "AYU LESTARI", password: "IMI093", foto: "", drive: "https://drive.google.com/drive/folders/1CrpoqA907eK9caIQUdh_dSYF9VaMHMad?usp=drive_link" },
+  { nama: "DESTIRA PERMATA ARYANDI", password: "IMI094", foto: "", drive: "https://drive.google.com/drive/folders/1JSIYBGN7ThQQSORxWTu4YT11a0m_pek9?usp=drive_link" },
+  { nama: "SINTIA RIZKI WAHYUNINGSIH", password: "IMI095", foto: "", drive: "https://drive.google.com/drive/folders/18Zk0IOu8XoNJtxNH5J7knRHO8cbgf1Ow?usp=drive_link" },
+  { nama: "KEISHA ANDANI. K", password: "IMI096", foto: "", drive: "https://drive.google.com/drive/folders/1DxueyC2A5uskxEW73ZCJxbaj6FAoFr9M?usp=drive_link" },
+  { nama: "MUHAMMAD FATONY B. SETYAWAN", password: "IMI097", foto: "", drive: "https://drive.google.com/drive/folders/1LpRkjobMcK6A70X3tyDKJNn92TAynkmZ?usp=drive_link" },
+  { nama: "FIRDAUS", password: "IMI098", foto: "", drive: "https://drive.google.com/drive/folders/10rljAMJWVe2XkbzmV_2XPwmU6GoN8iXe?usp=drive_link" },
+  { nama: "WAHYU HIDAYAT", password: "IMI099", foto: "", drive: "https://drive.google.com/drive/folders/1TFN2Y5Ot5l23LfOvmx6ciTorc6qqTT5c?usp=drive_link" },
+  { nama: "I GUSTI NGURAH DEVA ADITYA LAKSMANA PUTRA", password: "IMI100", foto: "", drive: "https://drive.google.com/drive/folders/1HefxCu5-Z6jQA7oeRD0RnZTnmUZNgdIr?usp=drive_link" },
+  { nama: "APRILLIA FLORA INDAH REKTY", password: "IMI101", foto: "", drive: "https://drive.google.com/drive/folders/19IJSK-MLVWcIdfBcFb1-t05kJxhynKxv?usp=drive_link" }
 ];
 
 let activeAlpha = 'ALL';
+let pendingDrive = '';
 
 function getInitials(nama) {
   return nama.replace(/[^a-zA-Z\s]/g, '').trim().split(/\s+/).slice(0, 2).map(w => w[0]?.toUpperCase() || '').join('');
+}
+
+function openModal(idx) {
+  const e = employees[idx];
+  pendingDrive = e.drive;
+  document.getElementById('modalName').textContent = e.nama;
+  document.getElementById('pwInput').value = '';
+  document.getElementById('pwError').textContent = '';
+  document.getElementById('pwInput').classList.remove('error');
+  document.getElementById('pwModal').classList.add('open');
+  setTimeout(() => document.getElementById('pwInput').focus(), 120);
+  document.getElementById('pwModal').dataset.pw = e.password;
+}
+
+function closeModal() {
+  document.getElementById('pwModal').classList.remove('open');
+  pendingDrive = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('pwModal')) closeModal();
+}
+
+function togglePw() {
+  const inp = document.getElementById('pwInput');
+  const icon = document.getElementById('eyeIcon');
+  if (inp.type === 'password') {
+    inp.type = 'text';
+    icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/>';
+  } else {
+    inp.type = 'password';
+    icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+  }
+}
+
+function doLogin() {
+  const inp = document.getElementById('pwInput');
+  const correct = document.getElementById('pwModal').dataset.pw;
+  const val = inp.value.trim();
+  if (!val) { showPwError('Password tidak boleh kosong.'); return; }
+  if (val.toUpperCase() === correct.toUpperCase()) {
+    const url = pendingDrive;
+    closeModal();
+    setTimeout(() => { window.location.href = url; }, 80);
+  } else {
+    showPwError('Password salah. Silakan coba lagi.');
+    inp.classList.add('error');
+    setTimeout(() => inp.classList.remove('error'), 600);
+    inp.select();
+  }
+}
+
+function showPwError(msg) {
+  document.getElementById('pwError').textContent = msg;
 }
 
 function buildAlphaBar(list) {
@@ -743,23 +511,21 @@ function clearSearch() {
 
 function render() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  const cntEl = document.getElementById('totalCount');
-  const hdrEl = document.getElementById('hdrCount');
-  const infoEl = document.getElementById('resultsInfo');
-  const container = document.getElementById('gridContainer');
-  const emptyEl = document.getElementById('emptyState');
-
-  cntEl.textContent = employees.length;
-  hdrEl.textContent = employees.length;
+  document.getElementById('totalCount').textContent = employees.length;
+  document.getElementById('hdrCount').textContent = employees.length;
   document.getElementById('searchClear').classList.toggle('visible', q.length > 0);
 
-  let filtered = employees.filter(e => {
-    const matchQ = !q || e.nama.toLowerCase().includes(q) || (e.nip && e.nip.includes(q));
+  let filtered = employees.map((e, i) => ({...e, _idx: i})).filter(e => {
+    const matchQ = !q || e.nama.toLowerCase().includes(q);
     const matchA = activeAlpha === 'ALL' || e.nama[0].toUpperCase() === activeAlpha;
     return matchQ && matchA;
   });
 
   buildAlphaBar(employees);
+
+  const container = document.getElementById('gridContainer');
+  const emptyEl = document.getElementById('emptyState');
+  const infoEl = document.getElementById('resultsInfo');
 
   if (filtered.length === 0) {
     container.innerHTML = '';
@@ -792,7 +558,7 @@ function render() {
         <div class="letter-line"></div>
         <span class="letter-cnt">${groups[letter].length}</span>
       </div>
-      <div class="grid">${groups[letter].map((e) => cardHTML(e, delay++)).join('')}</div>
+      <div class="grid">${groups[letter].map(e => cardHTML(e, delay++)).join('')}</div>
     </div>`;
   });
   container.innerHTML = html;
@@ -804,20 +570,16 @@ function cardHTML(e, delay) {
     ? `<img src="${e.foto}" alt="${e.nama}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="avatar-initials" style="display:none">${ini}</span>`
     : `<span class="avatar-initials">${ini}</span>`;
 
+  const driveIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.2 15c.7-1.2 1-2.5.8-3.8-.4-2.4-2.4-4.3-4.8-4.8-1.2-.2-2.4 0-3.4.5"/><path d="m7 9.7-2.4 4.2c-.7 1.2-1 2.5-.8 3.8.4 2.4 2.4 4.3 4.8 4.8 1.2.2 2.4 0 3.4-.5"/><path d="M7 9.7 9.4 5.5c.7-1.2 2.1-1.9 3.5-1.5 1.4.4 2.3 1.7 2.2 3.2"/><path d="M5 17h14"/></svg>`;
+  const lockIcon = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+
   return `<div class="card" style="animation-delay:${Math.min(delay,30)*0.02}s">
     <div class="avatar">${photoContent}</div>
     <div class="card-name">${e.nama}</div>
-    ${e.nip ? `<div class="card-nip">${e.nip}</div>` : '<div class="card-nip">—</div>'}
     <div class="card-divider"></div>
-    <a class="drive-btn" href="${e.drive}" target="_blank" rel="noopener noreferrer">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21.2 15c.7-1.2 1-2.5.8-3.8-.4-2.4-2.4-4.3-4.8-4.8-1.2-.2-2.4 0-3.4.5"/>
-        <path d="m7 9.7-2.4 4.2c-.7 1.2-1 2.5-.8 3.8.4 2.4 2.4 4.3 4.8 4.8 1.2.2 2.4 0 3.4-.5"/>
-        <path d="M7 9.7 9.4 5.5c.7-1.2 2.1-1.9 3.5-1.5 1.4.4 2.3 1.7 2.2 3.2"/>
-        <path d="M5 17h14"/>
-      </svg>
-      Buka Odner
-    </a>
+    <button class="drive-btn" onclick="openModal(${e._idx})">
+      ${driveIcon} Buka ${lockIcon}
+    </button>
   </div>`;
 }
 
