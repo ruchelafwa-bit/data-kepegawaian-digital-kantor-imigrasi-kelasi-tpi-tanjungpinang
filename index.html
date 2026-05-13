@@ -95,27 +95,24 @@ header {
 
 .hero {
   position: relative; z-index: 1;
-  padding: 3rem 2rem 2.5rem; text-align: center;
+  padding: 2.5rem 2rem 2rem; text-align: center;
   border-bottom: 1px solid var(--divider);
   background: linear-gradient(180deg, rgba(56,174,224,0.08) 0%, transparent 100%);
 }
-.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--sky-primary); margin-bottom: 1rem; }
-.hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 32px; height: 1px; background: linear-gradient(90deg, transparent, var(--sky-mid)); }
-.hero-eyebrow::after { background: linear-gradient(90deg, var(--sky-mid), transparent); }
 .hero h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(60px, 15vw, 180px);
+  font-size: clamp(50px, 12vw, 140px);
   font-weight: 700;
   color: var(--text-primary);
   line-height: 0.9;
   margin-bottom: 0.6rem;
-  letter-spacing: -4px;
+  letter-spacing: -3px;
   font-style: normal;
 }
 .hero-accent {
   display: block;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(14px, 2vw, 22px);
+  font-size: clamp(12px, 1.6vw, 18px);
   font-weight: 500;
   font-style: italic;
   color: var(--sky-primary);
@@ -264,8 +261,8 @@ main { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; paddin
 
 @media (max-width: 700px) {
   .header-inner { padding: 0 1rem; }
-  .hero { padding: 2rem 1rem 2rem; }
-  .hero h2 { letter-spacing: -2px; }
+  .hero { padding: 1.5rem 1rem 1.5rem; }
+  .hero h2 { letter-spacing: -1.5px; }
   main { padding: 1.25rem 1rem 4rem; }
   .stats-bar, .alpha-bar { padding: 0 1rem; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 0.75rem; }
@@ -292,9 +289,8 @@ main { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; paddin
 </header>
 
 <section class="hero">
-  <div class="hero-eyebrow">Sistem Manajemen Data Pegawai</div>
   <h2>SIMANTAP</h2>
-  <span class="hero-accent">Sistem Informasi Manajemen Tata Administrasi Pegawai</span>
+  <span class="hero-accent">Sistem Manajemen Data Pegawai</span>
   <p class="hero-sub">Cari data kepegawaian berdasarkan nama atau NIP</p>
   <div class="search-wrap">
     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
